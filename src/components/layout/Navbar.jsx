@@ -152,12 +152,7 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      ref={navRef}
-      className={`sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-shadow duration-300 ${
-        isScrolled ? 'shadow-md' : 'shadow-xs'
-      }`}
-    >
+    <>
       {/* Top Utility Bar (Desktop Only) */}
       <div className="hidden lg:block bg-pleco-navy-dark text-slate-300 text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -185,75 +180,85 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Brand Logo */}
-          <Link
-            to="/"
-            className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue rounded-lg p-1 transition-transform hover:scale-[1.02]"
-            aria-label="Pleco Solutions Home"
-          >
-            <Logo className="h-10 sm:h-11 w-auto" variant="default" />
-          </Link>
+      {/* Floating Pill Navigation Bar Header */}
+      <header
+        ref={navRef}
+        className="sticky top-0 sm:top-2 md:top-3 z-50 px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 pointer-events-none transition-all duration-300"
+      >
+        <div
+          className={`max-w-7xl mx-auto rounded-full bg-white/80 backdrop-blur-md border border-slate-200/80 transition-all duration-300 pointer-events-auto px-4 sm:px-6 lg:px-8 ${
+            isScrolled
+              ? 'shadow-xl shadow-slate-900/10 bg-white/90 border-slate-300/90'
+              : 'shadow-lg shadow-slate-900/5'
+          }`}
+        >
+          <div className="flex items-center justify-between h-16 sm:h-20">
+            {/* Brand Logo */}
+            <Link
+              to="/"
+              className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue rounded-full p-1.5 transition-transform hover:scale-[1.02]"
+              aria-label="Pleco Solutions Home"
+            >
+              <Logo className="h-9 sm:h-10 w-auto" variant="default" />
+            </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2" aria-label="Main Navigation">
-            {headerNavLinks.map((item) => {
-              const active = isLinkActive(item);
+            {/* Desktop Navigation Links */}
+            <nav className="hidden md:flex items-center space-x-1 lg:space-x-1.5" aria-label="Main Navigation">
+              {headerNavLinks.map((item) => {
+                const active = isLinkActive(item);
 
-              if (!item.isDropdown) {
-                return (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
-                      active
-                        ? 'text-pleco-blue bg-pleco-ice font-bold'
-                        : 'text-slate-700 hover:text-pleco-blue hover:bg-slate-50'
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                );
-              }
-
-              return (
-                <div
-                  key={item.name}
-                  className="relative"
-                  onMouseEnter={() => handleMouseEnter(item.name)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <button
-                    type="button"
-                    onClick={() => toggleDropdownClick(item.name)}
-                    aria-expanded={activeDropdown === item.name}
-                    aria-haspopup="true"
-                    className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue ${
-                      active || activeDropdown === item.name
-                        ? 'text-pleco-blue bg-pleco-ice'
-                        : 'text-slate-700 hover:text-pleco-blue hover:bg-slate-50'
-                    }`}
-                  >
-                    <span>{item.name}</span>
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-200 ${
-                        activeDropdown === item.name ? 'rotate-180 text-pleco-blue' : 'text-slate-400'
+                if (!item.isDropdown) {
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={`px-3.5 lg:px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                        active
+                          ? 'text-pleco-blue bg-pleco-ice font-bold shadow-xs'
+                          : 'text-slate-700 hover:text-pleco-blue hover:bg-slate-100/80'
                       }`}
-                      aria-hidden="true"
-                    />
-                  </button>
-
-                  {/* Mega Menu Dropdown */}
-                  {activeDropdown === item.name && (
-                    <div
-                      className={`absolute left-0 mt-2 bg-white rounded-2xl shadow-xl border border-slate-200/90 py-4 px-4 z-50 animate-fade-in ${
-                        item.name === 'Solutions' ? 'w-[580px] -left-20' : 'w-80'
-                      }`}
-                      role="menu"
-                      aria-label={`${item.name} Submenu`}
                     >
+                      {item.name}
+                    </Link>
+                  );
+                }
+
+                return (
+                  <div
+                    key={item.name}
+                    className="relative"
+                    onMouseEnter={() => handleMouseEnter(item.name)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => toggleDropdownClick(item.name)}
+                      aria-expanded={activeDropdown === item.name}
+                      aria-haspopup="true"
+                      className={`inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue ${
+                        active || activeDropdown === item.name
+                          ? 'text-pleco-blue bg-pleco-ice font-bold shadow-xs'
+                          : 'text-slate-700 hover:text-pleco-blue hover:bg-slate-100/80'
+                      }`}
+                    >
+                      <span>{item.name}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          activeDropdown === item.name ? 'rotate-180 text-pleco-blue' : 'text-slate-400'
+                        }`}
+                        aria-hidden="true"
+                      />
+                    </button>
+
+                    {/* Mega Menu Dropdown */}
+                    {activeDropdown === item.name && (
+                      <div
+                        className={`absolute left-0 mt-3.5 bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-slate-200/90 py-4 px-4 z-50 animate-fade-in ${
+                          item.name === 'Solutions' ? 'w-[580px] -left-16 lg:-left-12' : 'w-80'
+                        }`}
+                        role="menu"
+                        aria-label={`${item.name} Submenu`}
+                      >
                       {item.name === 'Solutions' ? (
                         <div>
                           <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100 px-2">
@@ -345,7 +350,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               to="/contact"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-pleco-blue hover:bg-blue-700 text-white font-semibold text-sm transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-blue-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue"
+              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-pleco-blue hover:bg-blue-700 text-white font-semibold text-sm transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-blue-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue"
             >
               <span>Contact Us</span>
               <ArrowRight className="w-4 h-4" />
@@ -355,7 +360,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue"
+              className="md:hidden p-2.5 rounded-full text-slate-700 hover:text-slate-900 hover:bg-slate-100/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue"
               aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileMenuOpen}
             >
@@ -368,7 +373,7 @@ export default function Navbar() {
       {/* Mobile Drawer Backdrop Overlay */}
       {mobileMenuOpen && (
         <div
-          className="md:hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 transition-opacity"
+          className="md:hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 transition-opacity pointer-events-auto"
           onClick={() => setMobileMenuOpen(false)}
           aria-hidden="true"
         />
@@ -379,7 +384,7 @@ export default function Navbar() {
         id="mobile-navigation"
         aria-hidden={!mobileMenuOpen}
         inert={!mobileMenuOpen ? '' : undefined}
-        className={`md:hidden fixed inset-y-0 right-0 w-full max-w-sm bg-white z-50 shadow-2xl flex flex-col transition-all duration-300 ease-in-out ${
+        className={`md:hidden fixed inset-y-0 right-0 w-full max-w-sm bg-white z-50 shadow-2xl flex flex-col transition-all duration-300 ease-in-out pointer-events-auto ${
           mobileMenuOpen
             ? 'translate-x-0 visible opacity-100 pointer-events-auto'
             : 'translate-x-full invisible opacity-0 pointer-events-none'
@@ -488,5 +493,6 @@ export default function Navbar() {
         </div>
       </div>
     </header>
-  );
+  </>
+);
 }
