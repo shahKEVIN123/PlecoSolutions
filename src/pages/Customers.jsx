@@ -1,37 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Breadcrumbs from '../components/ui/Breadcrumbs.jsx';
-import { Quote, Star, Building2, ArrowRight } from 'lucide-react';
+import { Quote, Building2, ArrowRight, Award, ShieldCheck, CheckCircle2, Star } from 'lucide-react';
 
-/**
- * Milestone 1 Placeholder: Customers / Testimonials Page (Route: `/customers`)
- * Features all 3 full verbatim enterprise reviews from Qualcomm, PetSafe, and Cummins.
- */
 export default function Customers() {
   const testimonials = [
     {
-      company: 'Hi-Tech Leader (Qualcomm Ecosystem)',
-      author: 'Demand Manager Lead',
-      role: 'Hi-Tech',
+      id: 'qualcomm',
+      clientName: 'Qualcomm, Inc.',
+      role: 'Demand Manager Lead, Hi-Tech (Qualcomm, Inc.)',
+      industry: 'Hi-Tech',
       quote:
         'A highly valued asset during the implementation phase of Demantra. The product knowledge PLECO brought to the team helped resolve various customization activities within the module. Team was often challenged to provide solutions on various complex business needs. They quickly resolved all scenarios and often exceeded expectations. I strongly recommend this team for similiar efforts',
-      highlight: 'Exceeded expectations on complex Demantra customization',
+      highlight: 'Exceeded expectations on intricate Demantra customizations',
+      metrics: 'Rapid Scenario Resolution',
     },
     {
-      company: 'PetSafe (Radio Systems Corporation)',
-      author: 'ERP Manager',
-      role: 'Enterprise Systems',
+      id: 'petsafe',
+      clientName: 'PetSafe',
+      role: 'ERP Manager, Petsafe',
+      industry: 'Pet Products / CPG',
       quote:
-        "Pleco Solutions delivered a fully functional VCP proof-of-concept in just 2 weeks—achieving what our previous consulting partner couldn't deliver in two months—and guided our full implementation to go-live well ahead of the anticipated six-month timeline.",
-      highlight: 'Delivered VCP POC in 2 weeks ahead of 6-month timeline',
+        "Pleco worked as consulting partner for our Demantra Demand Management implementation project in August 2011. In just 2 weeks we had fully functional VCP proof-of-the-concept - something that previous implementation partner couldn't deliver in 2 months using handful of consultants. Few more weeks for couple of extensions and conversion - and we went live with project that was previously estimated to take half-year. . That's what distinguishes prime consultancy from sub-prime!",
+      highlight: 'Functional POC in 2 weeks vs. competitor 2 months',
+      metrics: 'Go-Live in Weeks vs. 6-Month Estimate',
     },
     {
-      company: 'Cummins Power Generation',
-      author: 'Business Planning & Analysis Manager',
-      role: 'Supply Chain BP&A',
+      id: 'cummins',
+      clientName: 'Cummins Power Generation',
+      role: 'Business Planning & Analysis Manager, Cummins Power Generation',
+      industry: 'Industrial Manufacturing',
       quote:
-        'The Pleco team provided invaluable support during our ODP migration to Oracle Demantra, delivering the project on schedule, shortening our monthly forecast cycle, and resolving complex planning challenges.',
-      highlight: 'Shortened monthly forecast cycles and delivered ODP migration',
+        "...[PLECO] supported Cummins Power Generation BP&A launched ODP migration to Oracle Demantra application. With his assistance, the whole project was finished on time and helped shorten the forecast cycle. ...[PLECO] good team players, very responsible, not only identify issues but also provide solutions. It's my pleasure to work with ...[PLECO].",
+      highlight: 'Shortened forecast cycles & seamless ODP migration',
+      metrics: 'On-Time Migration to Demantra',
     },
   ];
 
@@ -40,43 +42,85 @@ export default function Customers() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumbs items={[{ label: 'Customer Testimonials' }]} />
 
-        {/* Header Block */}
-        <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-sky-100 text-sky-800 text-xs font-semibold uppercase tracking-wider mb-3">
-            Client Success
+        {/* Hero Header Banner */}
+        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 max-w-4xl space-y-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+              <Award className="w-4 h-4 text-cyan-400" />
+              <span>Verified Client Endorsements</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+              Customer Testimonials
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+              Read firsthand how Pleco Solutions partners with global enterprises to modernize Oracle planning
+              systems, resolve intricate architectural bottlenecks, and deliver ahead of schedule.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md"
+              >
+                <span>Partner With Us</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/solutions"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-semibold text-sm transition-all"
+              >
+                <span>Explore Solutions</span>
+              </Link>
+            </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-4">
-            Customer Testimonials
-          </h1>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Read firsthand how Pleco Solutions partners with global enterprises to modernize Oracle planning
-            systems, resolve intricate architectural bottlenecks, and deliver ahead of schedule.
-          </p>
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {testimonials.map((t, index) => (
+        <div className="space-y-8 mb-20">
+          {testimonials.map((t) => (
             <div
-              key={index}
-              className="bg-white rounded-2xl border border-slate-200 p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative"
+              key={t.id}
+              className="bg-white rounded-3xl border border-slate-200/90 p-8 lg:p-12 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 relative"
             >
-              <div>
-                <Quote className="w-8 h-8 text-sky-300 mb-4" />
-                <div className="inline-block px-2.5 py-1 rounded bg-sky-50 text-sky-700 text-xs font-semibold mb-4">
-                  {t.highlight}
-                </div>
-                <blockquote className="text-sm sm:text-base text-slate-700 leading-relaxed italic mb-6">
-                  "{t.quote}"
-                </blockquote>
-              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                {/* Left Side: Client Credential */}
+                <div className="lg:col-span-4 space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pleco-ice border border-blue-200 text-pleco-blue text-xs font-bold uppercase tracking-wider">
+                    <Building2 className="w-3.5 h-3.5" />
+                    <span>{t.industry}</span>
+                  </div>
 
-              <div className="pt-4 border-t border-slate-100">
-                <div className="font-bold text-slate-900 text-sm">{t.author}</div>
-                <div className="text-xs text-slate-500 font-medium">{t.role}</div>
-                <div className="text-xs text-sky-600 font-semibold mt-1 flex items-center gap-1">
-                  <Building2 className="w-3.5 h-3.5" />
-                  <span>{t.company}</span>
+                  <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
+                    {t.clientName}
+                  </h3>
+
+                  <div className="text-sm font-semibold text-slate-700">
+                    {t.role}
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1">
+                    <div className="font-bold text-slate-800 uppercase tracking-wider text-[10px]">
+                      Outcome Spotlight:
+                    </div>
+                    <div className="font-medium text-pleco-blue">{t.metrics}</div>
+                  </div>
+                </div>
+
+                {/* Right Side: Full Verbatim Quote */}
+                <div className="lg:col-span-8 lg:border-l lg:border-slate-100 lg:pl-8 space-y-6">
+                  <Quote className="w-10 h-10 text-blue-200" />
+                  
+                  <blockquote className="text-base sm:text-lg text-slate-700 leading-relaxed italic font-normal">
+                    "{t.quote}"
+                  </blockquote>
+
+                  <div className="flex items-center gap-2 pt-4 border-t border-slate-100 text-xs font-semibold text-emerald-600">
+                    <CheckCircle2 className="w-4 h-4 shrink-0" />
+                    <span>{t.highlight}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -84,16 +128,18 @@ export default function Customers() {
         </div>
 
         {/* Enterprise Bottom Banner */}
-        <div className="bg-slate-900 rounded-2xl text-white p-8 lg:p-10 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <h2 className="text-2xl font-bold mb-2">Ready to achieve similar results?</h2>
-            <p className="text-sm text-slate-400">
-              Schedule a technical discovery session with our Oracle VCP specialists.
+        <div className="bg-pleco-navy-dark rounded-3xl text-white p-8 lg:p-14 flex flex-col sm:flex-row items-center justify-between gap-8 shadow-xl">
+          <div className="max-w-2xl space-y-2">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+              Ready to achieve similar results?
+            </h2>
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Schedule a technical discovery session with our Oracle Value Chain Planning specialists.
             </p>
           </div>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm transition-all shrink-0"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-lg hover:shadow-blue-500/25 shrink-0"
           >
             <span>Contact Pleco Solutions</span>
             <ArrowRight className="w-4 h-4" />

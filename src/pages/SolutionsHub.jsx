@@ -1,44 +1,52 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Breadcrumbs from '../components/ui/Breadcrumbs.jsx';
-import { 
-  BarChart2, 
-  Boxes, 
-  Workflow, 
-  Network, 
-  CalendarClock, 
-  Truck, 
+import {
+  TrendingUp,
+  Layers,
+  Cpu,
+  Network,
+  Clock,
+  CheckCircle2,
   ArrowRight,
   Factory,
-  CheckCircle2
+  Package,
+  Pill,
+  Award,
+  ShieldCheck,
+  ChevronRight,
+  Sparkles,
 } from 'lucide-react';
 
-/**
- * Milestone 1 Placeholder: Solutions Hub Page (Route: `/solutions`)
- * Displays comprehensive catalog of planning modules and direct links to all 6 deep-dive routes.
- */
 export default function SolutionsHub() {
   const solutions = [
     {
       title: 'Demand Planning',
       href: '/demand-planning',
-      code: 'Demantra DM / AFDM / SPF',
-      description: 'Advanced Bayesian forecasting engines, multi-dimensional demand modeling, and service parts forecasting.',
-      icon: BarChart2,
+      code: 'Oracle Demantra DM / AFDM / SPF',
+      description: 'Advanced Bayesian forecasting engines, multi-dimensional demand modeling, automated forecast analytics, and service parts forecasting.',
+      icon: TrendingUp,
+      accent: 'from-blue-600 to-cyan-500',
+      highlights: ['Multidimensional Data Modeling', 'Automated Forecast Analytics', 'ODP-to-Demantra Migration'],
     },
     {
       title: 'Supply Planning',
       href: '/supply-planning',
       code: 'Oracle ASCP / Rapid Planning / IO',
-      description: 'Holistic multi-echelon supply chain planning, material and resource constraints, and safety stock optimization.',
-      icon: Boxes,
+      description: 'Holistic multi-echelon supply chain planning, material and resource constraints, in-memory simulations, and safety stock optimization.',
+      icon: Layers,
+      accent: 'from-indigo-600 to-blue-500',
+      highlights: ['Multi-tier Supply Chain Planning', 'Constrained & Cost-Optimized', 'In-Memory Incremental Engine'],
     },
     {
       title: 'Integrated Business Planning',
       href: '/integrated-business-planning',
       code: 'SIMPLE Framework / Real-Time S&OP',
-      description: 'Executive alignment across Sales, Operations, and Finance translating corporate strategy into operational execution.',
-      icon: Workflow,
+      description: 'Executive alignment across Sales, Marketing, Operations, and Finance translating strategic goals into a consensus one-number plan.',
+      icon: Cpu,
+      accent: 'from-cyan-600 to-teal-500',
+      highlights: ['SIMPLE Framework Methodology', 'Demantra Real-Time S&OP', 'APCC Financial Convergence'],
     },
     {
       title: 'Network Planning',
@@ -46,27 +54,60 @@ export default function SolutionsHub() {
       code: 'Oracle SNO / Collaborative Planning',
       description: 'Strategic network design, sourcing cost minimization, contingency modeling, and multi-tier partner collaboration.',
       icon: Network,
+      accent: 'from-blue-700 to-indigo-600',
+      highlights: ['Supply Chain Network Modeling', 'Strategic What-If Simulation', 'Vendor Managed Inventory (VMI)'],
     },
     {
       title: 'Production Planning',
       href: '/production-planning',
       code: 'Oracle Production Scheduling (PS)',
-      description: 'Finite capacity scheduling, sequence-dependent setup minimization, and factory-floor dispatch workbench.',
-      icon: CalendarClock,
+      description: 'Finite capacity scheduling, sequence-dependent setup minimization, bottleneck elimination, and factory-floor dispatch workbench.',
+      icon: Clock,
+      accent: 'from-sky-600 to-blue-600',
+      highlights: ['Resource & Bottleneck Optimization', 'Constraint-Based Finite Scheduling', 'Setup Time Minimization'],
     },
     {
       title: 'Order Fulfillment',
       href: '/order-fulfillment',
       code: 'Oracle GOP / DOO',
-      description: '24/7 high-availability ATP, CTP, and CTD order promising with distributed order orchestration.',
-      icon: Truck,
+      description: '24/7 high-availability ATP, CTP, and CTD order promising with distributed order orchestration and zero downtime.',
+      icon: CheckCircle2,
+      accent: 'from-emerald-600 to-teal-500',
+      highlights: ['24x7 Customer Order Promising', 'ATP / CTP / CTD Rules Engine', 'Fair-Share Supply Allocation'],
     },
   ];
 
+  const coreModules = [
+    'Integrated Business Planning',
+    'Demand Planning',
+    'Supply Planning',
+    'Sales & Operations Planning',
+    'Production Planning',
+    'Network Planning',
+    'Order Promising',
+    'Service Parts Planning',
+    'Logististics Optimization',
+    'Business Intelligence',
+    'Product Value Chain',
+    'Hyperion planning',
+  ];
+
   const verticals = [
-    'Hi-Tech | Consumer Packaged Goods (CPG)',
-    'Industrial Manufacturing | Distribution',
-    'Life Sciences | Pharma | Process industry',
+    {
+      title: 'Hi-Tech | Consumer Packaged Goods (CPG)',
+      desc: 'Rapid product life cycles, demand shaping, configure-to-order (CTO) architectures, and real-time ATP fulfillment.',
+      icon: Package,
+    },
+    {
+      title: 'Industrial Manufacturing | Distribution',
+      desc: 'Complex bill of materials (BOM), finite resource scheduling, multi-tier supply chain networks, and supplier VMI.',
+      icon: Factory,
+    },
+    {
+      title: 'Life Sciences | Pharma | Process industry',
+      desc: 'Stringent regulatory tracking, potency batch balancing, expiration date constraints, and cold-chain logistics.',
+      icon: Pill,
+    },
   ];
 
   return (
@@ -74,77 +115,200 @@ export default function SolutionsHub() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumbs items={[{ label: 'Solutions' }]} />
 
-        {/* Header Block */}
-        <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-sky-100 text-sky-800 text-xs font-semibold uppercase tracking-wider mb-3">
-            Core Portfolio
+        {/* Hero Header Card */}
+        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 max-w-4xl space-y-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+              <Award className="w-4 h-4 text-cyan-400" />
+              <span>Comprehensive Enterprise Solutions</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+              Oracle Planning Solutions Portfolio
+            </h1>
+
+            {/* Verbatim Paragraph */}
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+              Pleco serve customers to enhance processes for Integrated Business Planning, Demand Planning,
+              Supply Planning, Sales &amp; Operations Planning, Production Planning, Network Planning, Order
+              Promising, Service Parts Planning, Logististics Optimization,Business Intelligence, Product Value
+              Chain and Hyperion planning.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md"
+              >
+                <span>Request Architecture Assessment</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <a
+                href="#all-modules"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-semibold text-sm transition-all"
+              >
+                <span>View All 12 Modules</span>
+              </a>
+            </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-4">
-            Oracle Planning Solutions Portfolio
-          </h1>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Pleco serve customers to enhance processes for Integrated Business Planning, Demand Planning,
-            Supply Planning, Sales &amp; Operations Planning, Production Planning, Network Planning, Order
-            Promising, Service Parts Planning, Logististics Optimization,Business Intelligence, Product Value
-            Chain and Hyperion planning.
-          </p>
         </div>
 
-        {/* 6 Planning Modules Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {solutions.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.href}
-                className="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg hover:border-sky-300 transition-all group"
-              >
-                <div>
-                  <div className="w-12 h-12 rounded-lg bg-sky-50 text-brand-primary-600 flex items-center justify-center mb-4 group-hover:bg-sky-500 group-hover:text-white transition-colors">
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <div className="text-xs font-semibold text-sky-600 uppercase tracking-wide mb-1">
-                    {item.code}
-                  </div>
-                  <h2 className="text-xl font-bold text-slate-900 mb-2">
-                    {item.title}
-                  </h2>
-                  <p className="text-sm text-slate-600 mb-6 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
+        {/* 6 Planning Modules Bento Grid */}
+        <div className="mb-20">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
+                Deep-Dive Modules
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+                Specialized Value Chain Planning Domains
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-500 max-w-md">
+              Each module is delivered with proven deployment templates, customized data models, and verified Oracle standard practices.
+            </p>
+          </div>
 
-                <Link
-                  to={item.href}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary-600 group-hover:text-brand-primary-800 transition-colors pt-4 border-t border-slate-100"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {solutions.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.href}
+                  className="bg-white rounded-2xl border border-slate-200/90 p-7 flex flex-col justify-between hover:shadow-xl hover:border-pleco-blue hover:-translate-y-1 transition-all duration-300 group"
                 >
-                  <span>Explore Capabilities</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            );
-          })}
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-12 h-12 rounded-xl bg-pleco-ice group-hover:bg-pleco-blue text-pleco-blue group-hover:text-white flex items-center justify-center transition-colors shadow-xs">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <span className="text-[10px] font-mono font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">
+                        {item.code.split('/')[0].trim()}
+                      </span>
+                    </div>
+
+                    <div className="text-[11px] font-bold text-pleco-blue uppercase tracking-wider mb-1">
+                      {item.code}
+                    </div>
+
+                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-pleco-blue transition-colors">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-sm text-slate-600 mb-6 leading-relaxed">
+                      {item.description}
+                    </p>
+
+                    <div className="space-y-2 mb-6 pt-4 border-t border-slate-100">
+                      {item.highlights.map((h) => (
+                        <div key={h} className="flex items-center gap-2 text-xs text-slate-700">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-pleco-blue shrink-0" />
+                          <span>{h}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Link
+                    to={item.href}
+                    className="inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-sm font-bold text-pleco-blue group-hover:text-blue-700 transition-colors"
+                  >
+                    <span>Explore Deep-Dive</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Verticals Section */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-8 lg:p-10">
-          <div className="flex items-center gap-3 mb-6">
-            <Factory className="w-6 h-6 text-brand-primary-600" />
-            <h2 className="text-2xl font-bold text-slate-900">
-              Pleco has extensive experience in various verticals
+        {/* All 12 Oracle Modules Catalog Section */}
+        <div id="all-modules" className="mb-20 p-8 lg:p-12 rounded-3xl bg-white border border-slate-200 shadow-sm">
+          <div className="max-w-3xl mb-8">
+            <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
+              Complete Functional Coverage
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-2">
+              All 12 Core Oracle Planning Disciplines
             </h2>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Pleco Solutions provides certified, multi-disciplined consultants skilled in every facet of Oracle’s supply chain planning suite:
+            </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {verticals.map((vert) => (
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5">
+            {coreModules.map((mod) => (
               <div
-                key={vert}
-                className="p-4 rounded-lg bg-slate-50 border border-slate-200 text-sm font-semibold text-slate-800 flex items-center gap-2"
+                key={mod}
+                className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:bg-pleco-ice hover:border-blue-200 transition-all flex items-center gap-3"
               >
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>{vert}</span>
+                <div className="w-2 h-2 rounded-full bg-pleco-blue shrink-0" />
+                <span className="text-xs sm:text-sm font-semibold text-slate-800">
+                  {mod}
+                </span>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Verticals Section */}
+        <div className="bg-white rounded-3xl border border-slate-200 p-8 lg:p-12 shadow-sm mb-16">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2.5 rounded-xl bg-pleco-ice text-pleco-blue">
+              <Factory className="w-6 h-6" />
+            </div>
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block">
+                Target Industries
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+                Pleco has extensive experience in various verticals
+              </h2>
+            </div>
+          </div>
+          <p className="text-sm text-slate-600 mb-8 max-w-3xl leading-relaxed">
+            Our consultants understand the distinct supply chain challenges inherent to discrete manufacturing, fast-moving consumer packaged goods, and regulated pharmaceutical distribution.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {verticals.map((vert) => {
+              const IconComp = vert.icon;
+              return (
+                <div
+                  key={vert.title}
+                  className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all"
+                >
+                  <div className="p-3 rounded-xl bg-white border border-slate-200 text-pleco-blue inline-flex mb-4 shadow-xs">
+                    <IconComp className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-base font-bold text-slate-900 mb-2">
+                    {vert.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {vert.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Bottom Consultation CTA */}
+        <div className="text-center bg-gradient-to-r from-pleco-navy-dark via-navy-900 to-pleco-navy-dark p-10 lg:p-14 rounded-3xl text-white">
+          <h3 className="text-2xl sm:text-3xl font-bold mb-3 tracking-tight">
+            Need Expert Guidance on Your Oracle Planning Architecture?
+          </h3>
+          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+            Schedule a confidential technical review with our principal architects to explore deployment roadmaps, upgrade feasibility, and performance tuning.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-lg hover:shadow-blue-500/25"
+          >
+            <span>Schedule Initial Review</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </div>

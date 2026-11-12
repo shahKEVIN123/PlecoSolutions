@@ -1,25 +1,43 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, ArrowRight } from 'lucide-react';
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Phone,
+  Mail,
+  ArrowRight,
+  ShieldCheck,
+  TrendingUp,
+  Layers,
+  Cpu,
+  Network,
+  Clock,
+  CheckCircle2,
+  Users,
+  Briefcase,
+  HelpCircle,
+  MessageSquare,
+  Sparkles,
+} from 'lucide-react';
 import Logo from './Logo';
 import { headerNavLinks, footerNavigation } from '../../data/navigationData';
 
 /**
- * Navbar Component
- * Enterprise navigation header supporting:
- * - Brand Logo with link to root
- * - Multi-level desktop dropdowns for Solutions & About Us
- * - Keyboard navigation (Esc to close, Arrow keys, ARIA roles)
- * - Click-outside and route-change automatic dismissal
- * - Mobile responsive hamburger toggle and sliding accessible drawer (<768px)
- * - Body scroll lock during drawer visibility
- * - High-contrast WCAG 2.1 AA compliant styling
+ * Enterprise Navbar Component
+ * Features:
+ * - Top utility ticker with Oracle Partner status, 24/7 Managed Services indicator & direct phone
+ * - Glassmorphic main navigation bar with scroll elevation
+ * - Rich interactive mega-dropdowns for Solutions & About Us
+ * - Responsive accessible mobile drawer (<768px) with trap focus protection
+ * - Automatic window resize and orientation handling
+ * - Strict adherence to semantic Tailwind design tokens (zero arbitrary hex)
  */
 export default function Navbar() {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // 'Solutions' | 'About Us' | null
-  const [mobileExpanded, setMobileExpanded] = useState({}); // { Solutions: boolean, 'About Us': boolean }
+  const [mobileExpanded, setMobileExpanded] = useState({ Solutions: false, 'About Us': false });
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navRef = useRef(null);
@@ -68,14 +86,26 @@ export default function Navbar() {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     };
   }, [mobileMenuOpen]);
 
-  // Dropdown hover timing handlers (prevents accidental closing on rapid movement)
+  // Viewport resize listener: automatically close mobile drawer on desktop (>=768px)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+        document.body.style.overflow = '';
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Dropdown hover timing handlers
   const handleMouseEnter = (name) => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
@@ -100,7 +130,6 @@ export default function Navbar() {
     }));
   };
 
-  // Determine if a link or dropdown is active based on current path
   const isLinkActive = (item) => {
     if (location.pathname === item.href) return true;
     if (item.children && item.children.some((child) => location.pathname === child.href)) {
@@ -109,32 +138,49 @@ export default function Navbar() {
     return false;
   };
 
+  // Helper icons for mega menu items
+  const getSolutionIcon = (index) => {
+    const icons = [TrendingUp, Layers, Cpu, Network, Clock, CheckCircle2];
+    const IconComponent = icons[index % icons.length];
+    return <IconComponent className="w-5 h-5 text-pleco-blue shrink-0 group-hover:text-pleco-azure transition-colors" />;
+  };
+
+  const getAboutIcon = (index) => {
+    const icons = [ShieldCheck, Users, Briefcase, MessageSquare];
+    const IconComponent = icons[index % icons.length];
+    return <IconComponent className="w-5 h-5 text-pleco-blue shrink-0 group-hover:text-pleco-azure transition-colors" />;
+  };
+
   return (
     <header
       ref={navRef}
-      className={`sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 transition-shadow duration-200 ${
-        isScrolled ? 'shadow-sm' : ''
+      className={`sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-shadow duration-300 ${
+        isScrolled ? 'shadow-md' : 'shadow-xs'
       }`}
     >
       {/* Top Utility Bar (Desktop Only) */}
-      <div className="hidden lg:block bg-slate-900 text-slate-300 text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
+      <div className="hidden lg:block bg-pleco-navy-dark text-slate-300 text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-6">
-            <span className="text-slate-400">
-              Specialized Oracle Value Chain Planning (VCP) &amp; SCM Planning Cloud Consulting
+            <span className="inline-flex items-center gap-2 font-medium text-slate-300">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              <span>Specialized Oracle Value Chain Planning (VCP) &amp; SCM Planning Cloud Consulting</span>
             </span>
           </div>
           <div className="flex items-center space-x-6">
             <a
               href={`tel:${footerNavigation.contact.phoneRaw}`}
-              className="flex items-center gap-1.5 hover:text-white transition-colors"
+              className="flex items-center gap-1.5 hover:text-white transition-colors text-slate-300"
               aria-label={`Call Pleco Solutions at ${footerNavigation.contact.phone}`}
             >
-              <Phone className="w-3.5 h-3.5 text-blue-400" />
+              <Phone className="w-3.5 h-3.5 text-pleco-blue" />
               <span>{footerNavigation.contact.phone}</span>
             </a>
-            <span className="text-slate-600">|</span>
-            <span className="text-emerald-400 font-medium">24/7 Managed Services &amp; Support</span>
+            <span className="text-slate-700">|</span>
+            <span className="inline-flex items-center gap-1.5 text-emerald-400 font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span>24/7 Managed Services &amp; Support</span>
+            </span>
           </div>
         </div>
       </div>
@@ -145,7 +191,7 @@ export default function Navbar() {
           {/* Brand Logo */}
           <Link
             to="/"
-            className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-md p-1"
+            className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue rounded-lg p-1 transition-transform hover:scale-[1.02]"
             aria-label="Pleco Solutions Home"
           >
             <Logo className="h-10 sm:h-11 w-auto" variant="default" />
@@ -161,19 +207,16 @@ export default function Navbar() {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`px-3.5 py-2 rounded-md text-sm font-medium transition-colors ${
+                    className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
                       active
-                        ? 'text-blue-600 font-semibold bg-blue-50/80'
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-slate-50'
+                        ? 'text-pleco-blue bg-pleco-ice font-bold'
+                        : 'text-slate-700 hover:text-pleco-blue hover:bg-slate-50'
                     }`}
                   >
                     {item.name}
                   </Link>
                 );
               }
-
-              // Dropdown Menu Item (Solutions / About Us)
-              const isOpen = activeDropdown === item.name;
 
               return (
                 <div
@@ -185,82 +228,112 @@ export default function Navbar() {
                   <button
                     type="button"
                     onClick={() => toggleDropdownClick(item.name)}
-                    aria-expanded={isOpen}
+                    aria-expanded={activeDropdown === item.name}
                     aria-haspopup="true"
-                    className={`flex items-center gap-1 px-3.5 py-2 rounded-md text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
-                      active || isOpen
-                        ? 'text-blue-600 font-semibold bg-blue-50/80'
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-slate-50'
+                    className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue ${
+                      active || activeDropdown === item.name
+                        ? 'text-pleco-blue bg-pleco-ice'
+                        : 'text-slate-700 hover:text-pleco-blue hover:bg-slate-50'
                     }`}
                   >
                     <span>{item.name}</span>
                     <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`}
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        activeDropdown === item.name ? 'rotate-180 text-pleco-blue' : 'text-slate-400'
+                      }`}
+                      aria-hidden="true"
                     />
                   </button>
 
-                  {/* Dropdown Menu Panel */}
-                  {isOpen && (
+                  {/* Mega Menu Dropdown */}
+                  {activeDropdown === item.name && (
                     <div
-                      className={`absolute left-0 mt-1.5 bg-white rounded-xl shadow-xl border border-slate-200/90 py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150 ${
-                        item.name === 'Solutions' ? 'w-[520px]' : 'w-72'
+                      className={`absolute left-0 mt-2 bg-white rounded-2xl shadow-xl border border-slate-200/90 py-4 px-4 z-50 animate-fade-in ${
+                        item.name === 'Solutions' ? 'w-[580px] -left-20' : 'w-80'
                       }`}
                       role="menu"
-                      aria-orientation="vertical"
-                      aria-label={`${item.name} submenu`}
+                      aria-label={`${item.name} Submenu`}
                     >
-                      {/* Menu Header / Overview Link */}
-                      <div className="px-4 py-2 border-b border-slate-100 mb-2 flex justify-between items-center bg-slate-50/50">
-                        <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                          {item.name} Portfolio
-                        </span>
-                        <Link
-                          to={item.href}
-                          className="text-xs text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1"
-                        >
-                          View Hub <ArrowRight className="w-3 h-3" />
-                        </Link>
-                      </div>
-
-                      {/* Dropdown Grid */}
-                      <div
-                        className={
-                          item.name === 'Solutions' ? 'grid grid-cols-2 gap-1 px-2' : 'flex flex-col space-y-1 px-2'
-                        }
-                      >
-                        {item.children.map((subItem) => {
-                          const isSubActive = location.pathname === subItem.href;
-
-                          return (
+                      {item.name === 'Solutions' ? (
+                        <div>
+                          <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100 px-2">
+                            <div>
+                              <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue">
+                                Oracle Planning Portfolio
+                              </span>
+                              <p className="text-xs text-slate-500 mt-0.5">
+                                End-to-end Value Chain Planning Cloud &amp; On-Premise modules
+                              </p>
+                            </div>
                             <Link
-                              key={subItem.name}
-                              to={subItem.href}
-                              role="menuitem"
-                              className={`group p-2.5 rounded-lg transition-all flex flex-col justify-center ${
-                                isSubActive
-                                  ? 'bg-blue-50 text-blue-700 font-medium'
-                                  : 'hover:bg-slate-50 text-slate-800'
-                              }`}
+                              to="/solutions"
+                              className="text-xs font-semibold text-pleco-blue hover:text-pleco-navy transition-colors inline-flex items-center gap-1"
+                              onClick={() => setActiveDropdown(null)}
                             >
-                              <div className="flex items-center justify-between">
-                                <span className="text-sm font-medium group-hover:text-blue-600 transition-colors">
-                                  {subItem.name}
-                                </span>
-                                {subItem.code && (
-                                  <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 group-hover:bg-blue-100 group-hover:text-blue-700">
-                                    {subItem.code.split('/')[0]}
-                                  </span>
-                                )}
-                              </div>
-                              {subItem.description && (
-                                <p className="text-xs text-slate-500 line-clamp-1 mt-0.5 font-normal">
-                                  {subItem.description}
-                                </p>
-                              )}
+                              <span>Overview</span>
+                              <ArrowRight className="w-3 h-3" />
                             </Link>
-                          );
-                        })}
-                      </div>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-2">
+                            {item.children.map((child, idx) => (
+                              <Link
+                                key={child.name}
+                                to={child.href}
+                                role="menuitem"
+                                onClick={() => setActiveDropdown(null)}
+                                className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-200/70"
+                              >
+                                <div className="p-2 rounded-lg bg-pleco-ice group-hover:bg-pleco-tint transition-colors">
+                                  {getSolutionIcon(idx)}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-xs font-bold text-slate-900 group-hover:text-pleco-blue transition-colors flex items-center justify-between">
+                                    <span className="truncate">{child.name}</span>
+                                    {child.code && (
+                                      <span className="text-[10px] font-mono font-medium text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded ml-1 shrink-0">
+                                        {child.code.split('/')[0].trim()}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                                    {child.description}
+                                  </p>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="space-y-1">
+                          <div className="pb-2 mb-2 border-b border-slate-100 px-2">
+                            <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue">
+                              Company &amp; Firm Profile
+                            </span>
+                          </div>
+                          {item.children.map((child, idx) => (
+                            <Link
+                              key={child.name}
+                              to={child.href}
+                              role="menuitem"
+                              onClick={() => setActiveDropdown(null)}
+                              className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-200/70"
+                            >
+                              <div className="p-2 rounded-lg bg-pleco-ice group-hover:bg-pleco-tint transition-colors">
+                                {getAboutIcon(idx)}
+                              </div>
+                              <div>
+                                <div className="text-xs font-bold text-slate-900 group-hover:text-pleco-blue transition-colors">
+                                  {child.name}
+                                </div>
+                                <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                                  {child.description}
+                                </p>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -268,25 +341,23 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Desktop Right CTA Button */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Right Consultation CTA & Mobile Toggle */}
+          <div className="flex items-center gap-3">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 active:scale-[0.98]"
+              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-pleco-blue hover:bg-blue-700 text-white font-semibold text-sm transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-blue-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue"
             >
-              Get in Touch
+              <span>Contact Us</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
 
-          {/* Mobile Hamburger Toggle Button (<768px) */}
-          <div className="flex items-center md:hidden">
+            {/* Mobile Hamburger Toggle */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 transition-colors"
+              className="md:hidden p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue"
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-navigation"
-              aria-label={mobileMenuOpen ? 'Close main menu' : 'Open main menu'}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -294,20 +365,24 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer Overlay Backdrop (<768px) */}
+      {/* Mobile Drawer Backdrop Overlay */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-40 md:hidden transition-opacity"
+          className="md:hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 transition-opacity"
           onClick={() => setMobileMenuOpen(false)}
           aria-hidden="true"
         />
       )}
 
-      {/* Mobile Sliding Navigation Drawer (<768px) */}
+      {/* Mobile Navigation Drawer */}
       <div
         id="mobile-navigation"
-        className={`fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-2xl z-50 flex flex-col md:hidden transform transition-transform duration-300 ease-in-out ${
-          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        aria-hidden={!mobileMenuOpen}
+        inert={!mobileMenuOpen ? '' : undefined}
+        className={`md:hidden fixed inset-y-0 right-0 w-full max-w-sm bg-white z-50 shadow-2xl flex flex-col transition-all duration-300 ease-in-out ${
+          mobileMenuOpen
+            ? 'translate-x-0 visible opacity-100 pointer-events-auto'
+            : 'translate-x-full invisible opacity-0 pointer-events-none'
         }`}
         role="dialog"
         aria-modal="true"
@@ -319,8 +394,9 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(false)}
-            className="p-2 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            className="p-2 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue"
             aria-label="Close mobile menu"
+            tabIndex={mobileMenuOpen ? 0 : -1}
           >
             <X className="w-6 h-6" />
           </button>
@@ -329,15 +405,17 @@ export default function Navbar() {
         {/* Drawer Nav Items List */}
         <div className="flex-1 overflow-y-auto p-5 space-y-2">
           {headerNavLinks.map((item) => {
+            const active = isLinkActive(item);
+
             if (!item.isDropdown) {
-              const active = location.pathname === item.href;
               return (
                 <Link
                   key={item.name}
                   to={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
-                    active ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-800 hover:bg-slate-50'
+                  tabIndex={mobileMenuOpen ? 0 : -1}
+                  className={`block px-4 py-3 rounded-xl text-base font-semibold transition-colors ${
+                    active ? 'bg-pleco-ice text-pleco-blue' : 'text-slate-800 hover:bg-slate-50'
                   }`}
                 >
                   {item.name}
@@ -345,59 +423,42 @@ export default function Navbar() {
               );
             }
 
-            const isExpanded = !!mobileExpanded[item.name];
-            const hasActiveChild = item.children.some((child) => location.pathname === child.href);
+            const expanded = mobileExpanded[item.name];
 
             return (
               <div key={item.name} className="border-b border-slate-100 pb-2">
                 <button
                   type="button"
                   onClick={() => toggleMobileAccordion(item.name)}
-                  className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-base font-medium transition-colors ${
-                    hasActiveChild ? 'text-blue-600 font-semibold' : 'text-slate-800 hover:bg-slate-50'
-                  }`}
-                  aria-expanded={isExpanded}
+                  aria-expanded={expanded}
+                  tabIndex={mobileMenuOpen ? 0 : -1}
+                  className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-slate-800 hover:bg-slate-50 transition-colors"
                 >
                   <span>{item.name}</span>
                   <ChevronDown
-                    className={`w-5 h-5 text-slate-400 transition-transform duration-200 ${
-                      isExpanded ? 'rotate-180 text-blue-600' : ''
+                    className={`w-5 h-5 text-slate-400 transition-transform ${
+                      expanded ? 'rotate-180 text-pleco-blue' : ''
                     }`}
                   />
                 </button>
 
-                {/* Mobile Accordion Content */}
-                {isExpanded && (
-                  <div className="pl-4 pr-2 py-1 space-y-1 bg-slate-50/70 rounded-lg mt-1">
-                    {/* Top Hub Link */}
-                    <Link
-                      to={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-3 py-2 text-sm font-semibold text-blue-600 hover:underline"
-                    >
-                      {item.name} Hub Overview →
-                    </Link>
-
-                    {item.children.map((subItem) => {
-                      const isSubActive = location.pathname === subItem.href;
-                      return (
-                        <Link
-                          key={subItem.name}
-                          to={subItem.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className={`block px-3 py-2.5 rounded-md text-sm transition-colors ${
-                            isSubActive
-                              ? 'bg-blue-100 text-blue-800 font-medium'
-                              : 'text-slate-700 hover:bg-slate-100'
-                          }`}
-                        >
-                          <div className="font-medium">{subItem.name}</div>
-                          {subItem.code && (
-                            <div className="text-[11px] text-slate-500 font-mono mt-0.5">{subItem.code}</div>
-                          )}
-                        </Link>
-                      );
-                    })}
+                {expanded && (
+                  <div className="pl-4 pr-2 py-2 space-y-1">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.name}
+                        to={child.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        tabIndex={mobileMenuOpen ? 0 : -1}
+                        className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                          location.pathname === child.href
+                            ? 'text-pleco-blue bg-pleco-ice font-bold'
+                            : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                        }`}
+                      >
+                        {child.name}
+                      </Link>
+                    ))}
                   </div>
                 )}
               </div>
@@ -405,21 +466,23 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Drawer Footer Actions */}
+        {/* Drawer Footer Contact Action */}
         <div className="p-5 border-t border-slate-200 bg-slate-50 space-y-3">
           <Link
             to="/contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="w-full inline-flex items-center justify-center px-5 py-3 rounded-lg text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-colors"
+            tabIndex={mobileMenuOpen ? 0 : -1}
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-pleco-blue text-white font-semibold text-sm shadow-md hover:bg-blue-700 transition-colors"
           >
-            Get in Touch
+            <span>Contact Us</span>
+            <ArrowRight className="w-4 h-4" />
           </Link>
-
           <a
             href={`tel:${footerNavigation.contact.phoneRaw}`}
-            className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 transition-colors"
+            tabIndex={mobileMenuOpen ? 0 : -1}
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium text-xs hover:bg-white transition-colors"
           >
-            <Phone className="w-4 h-4 text-blue-600" />
+            <Phone className="w-3.5 h-3.5 text-pleco-blue" />
             <span>{footerNavigation.contact.phone}</span>
           </a>
         </div>

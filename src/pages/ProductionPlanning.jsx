@@ -1,20 +1,53 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Breadcrumbs from '../components/ui/Breadcrumbs.jsx';
-import { CalendarClock, CheckCircle2, ArrowRight } from 'lucide-react';
+import {
+  Clock,
+  CheckCircle2,
+  ArrowRight,
+  CalendarClock,
+  Sliders,
+  Zap,
+  Factory,
+  BarChart2,
+} from 'lucide-react';
 
-/**
- * Milestone 1 Placeholder: Production Planning (Route: `/production-planning`)
- * Focuses on Oracle Production Scheduling (PS) and plant-floor bottleneck management.
- */
 export default function ProductionPlanning() {
-  const capabilities = [
-    'Oracle Production Scheduling (PS)',
-    'Finite capacity scheduling across machines, tools, and labor',
-    'Sequence-dependent setup time and changeover cost minimization',
-    'Interactive Gantt chart drag-and-drop dispatching workbench',
-    'Floating bottleneck detection and throughput optimization',
-    'Seamless bidirectional integration with Oracle ASCP and shop-floor execution',
+  const coreTechnologies = [
+    {
+      title: 'Oracle Production Scheduling (PS)',
+      detail: 'Finite capacity scheduling application that maximizes factory-floor throughput, respects complex routing constraints, and minimizes sequence-dependent setup times.',
+    },
+  ];
+
+  const keyCapabilities = [
+    {
+      title: 'Resource & Bottleneck Optimization',
+      desc: 'Identify and resolve critical machine, tool, operator, and maintenance bottlenecks across discrete and process work centers.',
+    },
+    {
+      title: 'Constraint-Based Finite Scheduling',
+      desc: 'Generate practical, executable shop-floor schedules accounting for machine availability, labor shifts, and material staging.',
+    },
+    {
+      title: 'Minimization of sequence-dependent changeover/setup times',
+      desc: 'Intelligent scheduling algorithms group similar production attributes (color, size, chemistry) to slash idle changeover costs.',
+    },
+    {
+      title: 'Interactive drag-and-drop scheduling workbench',
+      desc: 'Interactive drag-and-drop scheduling workbench giving plant supervisors real-time Gantt visualization and immediate schedule resequencing.',
+    },
+    {
+      title: 'What-If Simulation Workbenches before dispatching work orders',
+      desc: 'What-If Simulation Workbenches before dispatching work orders, testing machine breakdowns or expedited priority orders with zero risk to production.',
+    },
+  ];
+
+  const benefits = [
+    'Substantially compress production cycle times and eliminate shop floor idle delays',
+    'Lower setup and changeover expenses by up to 35% through optimal batch sequencing',
+    'Increase machine utilization and overall equipment effectiveness (OEE)',
+    'Enhance plant dispatch confidence with feasible, constraint-validated work orders',
   ];
 
   return (
@@ -27,50 +60,148 @@ export default function ProductionPlanning() {
           ]}
         />
 
-        <div className="bg-white rounded-2xl border border-slate-200 p-8 lg:p-12 shadow-sm mb-12">
-          <div className="w-14 h-14 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-6">
-            <CalendarClock className="w-8 h-8" />
+        {/* Hero Banner */}
+        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-12 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 max-w-4xl space-y-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+              <Clock className="w-4 h-4 text-cyan-400" />
+              <span>Finite Scheduling | Oracle PS</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+              Production Planning &amp; Detailed Scheduling
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+              Maximize shop-floor throughput and eliminate sequence-dependent setup losses. Pleco implements
+              Oracle Production Scheduling (PS) to empower manufacturers with finite capacity sequencing,
+              interactive Gantt workbenches, and real-time bottleneck resolution.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md"
+              >
+                <span>Consult a Production Scheduling Specialist</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/solutions"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-semibold text-sm transition-all"
+              >
+                <span>View All Solutions</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Core Technology */}
+        <div className="mb-16">
+          <div className="max-w-2xl mb-8">
+            <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
+              Technology Stack
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+              Core Engine &amp; Integration
+            </h2>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-50 text-amber-700 text-xs font-semibold uppercase tracking-wider mb-3">
-            Oracle Production Scheduling (PS)
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-4">
-            Production Planning &amp; Scheduling
-          </h1>
-
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-4xl mb-8">
-            Pleco Solutions implements Oracle Production Scheduling (PS) to convert supply plans into realistic,
-            executable shop-floor schedules. We eliminate bottlenecks, reduce costly machine changeovers, and
-            provide planners with interactive dispatch workbenches to maximize production throughput.
-          </p>
-
-          <h2 className="text-xl font-bold text-slate-900 mb-4">Core Module Capabilities</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-            {capabilities.map((cap) => (
-              <div key={cap} className="flex items-start gap-2.5 text-sm text-slate-700">
-                <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-                <span>{cap}</span>
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+            {coreTechnologies.map((tech) => (
+              <div
+                key={tech.title}
+                className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-pleco-blue hover:shadow-lg transition-all"
+              >
+                <div className="w-10 h-10 rounded-xl bg-pleco-ice text-pleco-blue flex items-center justify-center mb-4">
+                  <CalendarClock className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2">
+                  {tech.title}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed max-w-4xl">
+                  {tech.detail}
+                </p>
               </div>
             ))}
           </div>
+        </div>
 
-          <div className="pt-6 border-t border-slate-100 flex flex-wrap items-center gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-primary-600 hover:bg-brand-primary-700 text-white font-medium text-sm transition-colors"
-            >
-              <span>Optimize Factory Scheduling</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              to="/solutions"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm transition-colors"
-            >
-              <span>View All Solutions</span>
-            </Link>
+        {/* Key Capabilities */}
+        <div className="mb-16 bg-white rounded-3xl border border-slate-200 p-8 lg:p-12 shadow-sm">
+          <div className="max-w-2xl mb-10">
+            <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
+              Operational Scheduling
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+              Key Capabilities &amp; Interactive Workbenches
+            </h2>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {keyCapabilities.map((cap) => (
+              <div
+                key={cap.title}
+                className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all"
+              >
+                <div className="flex items-center gap-2.5 mb-3">
+                  <CheckCircle2 className="w-5 h-5 text-pleco-blue shrink-0" />
+                  <h3 className="text-sm font-bold text-slate-900">
+                    {cap.title}
+                  </h3>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {cap.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Benefits Card */}
+        <div className="mb-16 p-8 lg:p-12 rounded-3xl bg-slate-900 text-white">
+          <div className="max-w-2xl mb-8">
+            <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 block mb-1">
+              Business Value
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              Manufacturing &amp; Operational ROI
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {benefits.map((b) => (
+              <div
+                key={b}
+                className="p-5 rounded-xl bg-slate-800/80 border border-slate-700/80 flex items-start gap-3"
+              >
+                <Zap className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
+                <span className="text-sm text-slate-200 font-medium">
+                  {b}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Consultation CTA */}
+        <div className="p-8 lg:p-10 rounded-2xl bg-pleco-ice border border-blue-200/80 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 className="text-xl font-bold text-slate-900 mb-1">
+              Ready to Eliminate Plant-Floor Bottlenecks?
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600">
+              Discover how Oracle Production Scheduling can deliver feasible, finite sequences that maximize machine utilization.
+            </p>
+          </div>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-pleco-blue hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-md shrink-0"
+          >
+            <span>Request Scheduling Workshop</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </div>

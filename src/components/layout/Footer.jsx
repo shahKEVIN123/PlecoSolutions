@@ -1,18 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Clock, ArrowUp, ArrowRight, ShieldCheck, ChevronRight } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, ArrowUp, ArrowRight, ShieldCheck, ChevronRight, Award } from 'lucide-react';
 import Logo from './Logo';
 import { footerNavigation } from '../../data/navigationData';
 
 /**
- * Footer Component
- * Enterprise 4-column layout supporting:
- * - Column 1: Brand Wordmark, Corporate Mission & Oracle Partner badge
- * - Column 2: Oracle Planning Solutions directory (7 links)
- * - Column 3: Quick Links / Consulting & Company directory (5 links)
- * - Column 4: Headquarters address, phone, email, and 24/7 operations info
- * - Sub-Footer: Exact verbatim copyright '© 2015 by PLECO SOLUTIONS' and trademark notices
- * - Smooth Back-to-Top scroll trigger
+ * Enterprise Footer Component
+ * Architectural Highlights:
+ * - Pre-footer Consultative Engagement Banner
+ * - 4-Column Enterprise Information Architecture
+ * - Verbatim Copyright '© 2015 by PLECO SOLUTIONS' and Trademark Disclaimers
+ * - WCAG 2.1 AA High-Contrast Typography
+ * - Uses semantic Tailwind tokens: bg-pleco-navy-dark and bg-navy-950 (no arbitrary hex)
  */
 export default function Footer() {
   const scrollToTop = () => {
@@ -23,10 +22,45 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#0A192F] text-slate-300 border-t border-slate-800 antialiased" aria-labelledby="footer-heading">
+    <footer className="bg-pleco-navy-dark text-slate-300 border-t border-slate-800 antialiased" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Pleco Solutions Corporate Footer
       </h2>
+
+      {/* Pre-Footer Action Banner */}
+      <div className="border-b border-slate-800/80 bg-gradient-to-r from-pleco-navy via-navy-800 to-pleco-navy py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 bg-slate-900/60 p-8 lg:p-10 rounded-2xl border border-slate-700/60 shadow-xl">
+            <div className="max-w-2xl space-y-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pleco-navy-dark border border-blue-500/30 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+                <Award className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Premier Value Chain Planning Advisory</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                Ready to Optimize Your Value Chain Planning?
+              </h3>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                Connect with our certified Oracle planning specialists to explore customized Demantra, ASCP, or SCM Planning Cloud roadmaps.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-4 shrink-0">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-lg hover:shadow-blue-500/25"
+              >
+                <span>Schedule Consultation</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/solutions"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold text-sm transition-all"
+              >
+                <span>Explore Solutions</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Main 4-Column Footer Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
@@ -37,7 +71,7 @@ export default function Footer() {
               <Logo className="h-10 w-auto" variant="white" />
             </Link>
 
-            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
+            <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
               {footerNavigation.overview.description}
             </p>
 
@@ -52,17 +86,17 @@ export default function Footer() {
 
           {/* Column 2: Oracle Planning Solutions (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider border-b border-slate-800 pb-2">
+            <div className="text-xs font-bold text-white uppercase tracking-wider">
               Planning Solutions
-            </h3>
-            <ul className="space-y-2.5" role="list">
+            </div>
+            <ul className="space-y-2.5 text-sm">
               {footerNavigation.solutions.map((item) => (
                 <li key={item.name}>
                   <Link
                     to={item.href}
-                    className="group flex items-center text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+                    className="group inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all mr-1.5" />
+                    <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all" />
                     <span>{item.name}</span>
                   </Link>
                 </li>
@@ -70,19 +104,19 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Quick Links / Company & Services (lg:col-span-2) */}
+          {/* Column 3: Consulting & Company (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider border-b border-slate-800 pb-2">
-              Quick Links
-            </h3>
-            <ul className="space-y-2.5" role="list">
+            <div className="text-xs font-bold text-white uppercase tracking-wider">
+              Company
+            </div>
+            <ul className="space-y-2.5 text-sm">
               {footerNavigation.company.map((item) => (
                 <li key={item.name}>
                   <Link
                     to={item.href}
-                    className="group flex items-center text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+                    className="group inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all mr-1.5" />
+                    <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all" />
                     <span>{item.name}</span>
                   </Link>
                 </li>
@@ -90,36 +124,41 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact & Operations (lg:col-span-3) */}
+          {/* Column 4: Corporate Headquarters & Contact (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider border-b border-slate-800 pb-2">
-              Contact Us
-            </h3>
-            <address className="not-italic space-y-3.5 text-sm text-slate-400">
-              {/* Address */}
-              <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-1" />
+            <div className="text-xs font-bold text-white uppercase tracking-wider">
+              Corporate Headquarters
+            </div>
+            <address className="not-italic space-y-3 text-sm text-slate-400">
+              {/* Company Name */}
+              <div className="font-semibold text-white tracking-wide">
+                {footerNavigation.contact.companyName}
+              </div>
+
+              {/* Physical Street Address */}
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                 <span>{footerNavigation.contact.address}</span>
               </div>
 
-              {/* Telephone */}
-              <div className="flex items-center gap-3">
+              {/* Direct Telephone */}
+              <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-cyan-400 shrink-0" />
                 <a
                   href={`tel:${footerNavigation.contact.phoneRaw}`}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors text-slate-300 font-medium"
                   aria-label={`Call ${footerNavigation.contact.phone}`}
                 >
                   {footerNavigation.contact.phone}
                 </a>
               </div>
 
-              {/* Email */}
-              <div className="flex items-center gap-3">
+              {/* Email Address */}
+              <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
                 <a
                   href={`mailto:${footerNavigation.contact.email}`}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors text-slate-300"
                   aria-label={`Email ${footerNavigation.contact.email}`}
                 >
                   {footerNavigation.contact.email}
@@ -127,8 +166,8 @@ export default function Footer() {
               </div>
 
               {/* Hours / Managed Services */}
-              <div className="flex items-center gap-3 text-xs text-slate-500 pt-1">
-                <Clock className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+              <div className="flex items-center gap-2.5 text-xs text-slate-400 pt-1">
+                <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>{footerNavigation.contact.hours}</span>
               </div>
             </address>
@@ -137,14 +176,14 @@ export default function Footer() {
       </div>
 
       {/* Sub-Footer & Legal Bar */}
-      <div className="border-t border-slate-800/80 bg-[#071324] py-8">
+      <div className="border-t border-slate-800/80 bg-navy-950 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Exact Verbatim Copyright as required */}
           <div className="text-xs text-slate-400 text-center md:text-left space-y-1">
             <p className="font-medium text-slate-300">
               {footerNavigation.legal.copyright}
             </p>
-            <p className="text-[11px] text-slate-500">
+            <p className="text-[11px] text-slate-400">
               {footerNavigation.legal.disclaimer}
             </p>
           </div>
@@ -153,7 +192,7 @@ export default function Footer() {
           <button
             type="button"
             onClick={scrollToTop}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
             aria-label="Back to top of page"
           >
             <span>Back to Top</span>

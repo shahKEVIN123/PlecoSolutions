@@ -1,20 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Breadcrumbs from '../components/ui/Breadcrumbs.jsx';
-import { Workflow, CheckCircle2, ArrowRight } from 'lucide-react';
+import {
+  Cpu,
+  CheckCircle2,
+  ArrowRight,
+  Workflow,
+  BarChart3,
+  Award,
+  Zap,
+  Target,
+  Sparkles,
+} from 'lucide-react';
 
-/**
- * Milestone 1 Placeholder: Integrated Business Planning (Route: `/integrated-business-planning`)
- * Highlights the proprietary SIMPLE Framework, Demantra Real-Time S&OP, and APCC.
- */
 export default function IntegratedBusinessPlanning() {
-  const capabilities = [
-    'Proprietary SIMPLE Framework methodology',
-    'Oracle Demantra Real-Time Sales & Operations Planning (S&OP)',
-    'Advanced Planning Command Center (APCC) executive dashboards',
-    'Cross-functional alignment across Sales, Marketing, Operations, and Finance',
-    'Real-time financial and volumetric what-if scenario modeling',
-    'Consensus forecasting tied directly to corporate P&L and balance sheet goals',
+  const framework = {
+    acronym: 'SIMPLE',
+    fullName: 'Smart Integrated Market-driven PLanning & Execution',
+    motto: 'From Plan to Performance to Profit',
+    alignedFunctions: ['Sales', 'Marketing', 'Operations', 'Finance'],
+  };
+
+  const coreTechnologies = [
+    {
+      title: 'Oracle Demantra Real-Time Sales & Operations Planning (RTSOP)',
+      detail: 'Dynamic collaborative S&OP workbench reconciling commercial forecasts with constrained operational plans in real time.',
+    },
+    {
+      title: 'Oracle Advanced Planning Command Center (APCC)',
+      detail: 'Executive analytics dashboard providing multidimensional scenario comparison, financial P&L rollups, and KPI tracking.',
+    },
+  ];
+
+  const keyCapabilities = [
+    {
+      title: 'Strategic "What-If" Scenario Modeling',
+      desc: 'Simulate the financial and operational impact of pricing changes, product launches, capacity limits, and supplier disruptions before execution.',
+    },
+    {
+      title: 'Operational & Financial Convergence',
+      desc: 'Translate volume-based operational plans directly into revenue, margin, and working capital projections aligned with executive financial targets.',
+    },
+    {
+      title: 'Single consensus one-number forecast',
+      desc: 'Eliminate conflicting spreadsheets by establishing a unified, cross-functional consensus plan binding Sales, Marketing, Operations, and Finance.',
+    },
   ];
 
   return (
@@ -27,50 +57,160 @@ export default function IntegratedBusinessPlanning() {
           ]}
         />
 
-        <div className="bg-white rounded-2xl border border-slate-200 p-8 lg:p-12 shadow-sm mb-12">
-          <div className="w-14 h-14 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-6">
-            <Workflow className="w-8 h-8" />
+        {/* Hero Banner */}
+        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-12 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 max-w-4xl space-y-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+              <Cpu className="w-4 h-4 text-cyan-400" />
+              <span>S&amp;OP &amp; Executive Analytics</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+              Integrated Business Planning (IBP)
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+              Bridge the divide between executive corporate strategy and day-to-day supply chain execution.
+              Pleco’s Integrated Business Planning framework couples Oracle Demantra Real-Time S&amp;OP and
+              Advanced Planning Command Center (APCC) to establish an authoritative one-number consensus plan.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md"
+              >
+                <span>Consult an IBP / S&amp;OP Architect</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/solutions"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-semibold text-sm transition-all"
+              >
+                <span>View All Solutions</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* SIMPLE Framework Feature Card */}
+        <div className="mb-16 p-8 lg:p-12 rounded-3xl bg-white border border-slate-200 shadow-sm">
+          <div className="max-w-3xl mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-pleco-ice text-pleco-blue text-xs font-bold uppercase tracking-wider mb-2">
+              <Award className="w-4 h-4" />
+              <span>Proprietary Methodology</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+              The {framework.acronym} Framework
+            </h2>
+            <div className="text-sm font-semibold text-pleco-blue mt-1">
+              {framework.fullName}
+            </div>
+            <p className="text-sm italic text-slate-500 mt-1">
+              "{framework.motto}"
+            </p>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-indigo-50 text-indigo-700 text-xs font-semibold uppercase tracking-wider mb-3">
-            S&amp;OP &amp; Executive Consensus
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-4">
-            Integrated Business Planning (IBP)
-          </h1>
-
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-4xl mb-8">
-            Pleco's Integrated Business Planning solutions combine our proprietary SIMPLE framework with
-            Oracle Demantra Real-Time S&amp;OP and APCC. We bridge executive strategy, demand reality, and supply
-            capabilities into a unified consensus operating plan that protects margins and drives enterprise value.
-          </p>
-
-          <h2 className="text-xl font-bold text-slate-900 mb-4">Core Capabilities &amp; SIMPLE Framework</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-            {capabilities.map((cap) => (
-              <div key={cap} className="flex items-start gap-2.5 text-sm text-slate-700">
-                <CheckCircle2 className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
-                <span>{cap}</span>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            {framework.alignedFunctions.map((func) => (
+              <div
+                key={func}
+                className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 text-center hover:bg-pleco-ice hover:border-blue-200 transition-colors"
+              >
+                <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-pleco-blue flex items-center justify-center mx-auto mb-3 shadow-xs">
+                  <Target className="w-5 h-5" />
+                </div>
+                <div className="text-sm font-bold text-slate-900">{func}</div>
+                <div className="text-[11px] text-slate-500 mt-1">Aligned Function</div>
               </div>
             ))}
           </div>
 
-          <div className="pt-6 border-t border-slate-100 flex flex-wrap items-center gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-primary-600 hover:bg-brand-primary-700 text-white font-medium text-sm transition-colors"
-            >
-              <span>Explore IBP Implementation</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              to="/solutions"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm transition-colors"
-            >
-              <span>View All Solutions</span>
-            </Link>
+          <p className="text-sm text-slate-600 leading-relaxed max-w-4xl border-t border-slate-100 pt-6">
+            The SIMPLE framework ensures all operational plans directly serve executive profit targets while maintaining customer service commitments across Sales, Marketing, Operations, and Finance.
+          </p>
+        </div>
+
+        {/* Core Technologies */}
+        <div className="mb-16">
+          <div className="max-w-2xl mb-8">
+            <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
+              Technology Stack
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+              Core Technologies &amp; Dashboards
+            </h2>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {coreTechnologies.map((tech) => (
+              <div
+                key={tech.title}
+                className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-pleco-blue hover:shadow-lg transition-all"
+              >
+                <div className="w-10 h-10 rounded-xl bg-pleco-ice text-pleco-blue flex items-center justify-center mb-4">
+                  <Workflow className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2">
+                  {tech.title}
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {tech.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Key Capabilities */}
+        <div className="mb-16 bg-white rounded-3xl border border-slate-200 p-8 lg:p-12 shadow-sm">
+          <div className="max-w-2xl mb-10">
+            <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
+              Core Capabilities
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+              Key Capabilities &amp; Convergence
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {keyCapabilities.map((cap) => (
+              <div
+                key={cap.title}
+                className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all"
+              >
+                <div className="flex items-center gap-2.5 mb-3">
+                  <CheckCircle2 className="w-5 h-5 text-pleco-blue shrink-0" />
+                  <h3 className="text-sm font-bold text-slate-900">
+                    {cap.title}
+                  </h3>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {cap.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Consultation CTA */}
+        <div className="p-8 lg:p-10 rounded-2xl bg-pleco-ice border border-blue-200/80 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 className="text-xl font-bold text-slate-900 mb-1">
+              Elevate Your S&amp;OP to Integrated Business Planning
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600">
+              Align executive finance, commercial sales, and operational manufacturing with Oracle Demantra RTSOP &amp; APCC.
+            </p>
+          </div>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-pleco-blue hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-md shrink-0"
+          >
+            <span>Request IBP Workshop</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </div>
