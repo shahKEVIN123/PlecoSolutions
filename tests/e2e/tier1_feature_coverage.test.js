@@ -152,8 +152,8 @@ describe('Tier 1: Feature Coverage Suite (Isolated Features)', () => {
       assert.deepStrictEqual(ibp.framework.alignedFunctions, ['Sales', 'Marketing', 'Operations', 'Finance']);
     });
 
-    it('should verify Corporate copyright notice is verbatim "© 2015 by PLECO SOLUTIONS"', () => {
-      assert.strictEqual(COMPANY_METADATA.copyright, '© 2015 by PLECO SOLUTIONS');
+    it('should verify Corporate copyright notice is verbatim "© 2026 by PLECO SOLUTIONS"', () => {
+      assert.strictEqual(COMPANY_METADATA.copyright, '© 2026 by PLECO SOLUTIONS');
     });
 
     it('should verify Corporate Site Title matches verbatim meta title', () => {

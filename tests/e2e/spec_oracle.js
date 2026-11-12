@@ -10,7 +10,7 @@ export const COMPANY_METADATA = {
   shortName: 'Pleco',
   siteTitle: 'Pleco | Oracle SCM Planning Cloud | Demantra ASCP GOP S&OP VCP',
   metaDescription: 'Pleco Solutions is a niche company providing end to end consulting services to implement Oracle SCM Planning Cloud and Oracle Value chain planning on-premise (VCP - Demantra, ASCP, GOP and S&OP Analytics) business solutions.',
-  copyright: '© 2015 by PLECO SOLUTIONS',
+  copyright: '© 2026 by PLECO SOLUTIONS',
   email: 'Info@plecosolutions.com',
   mailtoUri: 'mailto:Info@plecosolutions.com',
   phone: '+1 (650) 533-6649',

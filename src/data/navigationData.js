@@ -120,7 +120,7 @@ export const footerNavigation = {
     hours: '24/7 Managed Services & Help Desk',
   },
   legal: {
-    copyright: '© 2015 by PLECO SOLUTIONS',
+    copyright: '© 2026 by PLECO SOLUTIONS',
     rights: 'All rights reserved.',
     disclaimer:
       'Oracle®, Demantra®, and Hyperion® are registered trademarks of Oracle Corporation and/or its affiliates.',

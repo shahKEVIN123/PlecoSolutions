@@ -27,7 +27,7 @@ Every feature from the Phase 0 Survey mapped to a milestone with zero unassigned
 | # | Feature | Description | Milestone | Source |
 |---|---------|-------------|-----------|--------|
 | 1 | Global Header & Navigation | Persistent header with branding, 2 dropdown menus (Solutions & About), mobile drawer | M1 | survey |
-| 2 | Global Footer | 4-column enterprise footer, corporate copyright (© 2015 by PLECO SOLUTIONS), links, contact details | M1 | survey |
+| 2 | Global Footer | 4-column enterprise footer, corporate copyright (© 2026 by PLECO SOLUTIONS), links, contact details | M1 | survey |
 | 3 | Design System & Tokens | Executive Navy/Slate color tokens, typography scale, responsive breakpoints, reset | M1 | survey |
 | 4 | Client-side Router Setup | Clean SPA routing across all 13 canonical URLs with ScrollToTop on navigation | M1 | survey |
 | 5 | Vector Brand Logo & Favicon | High-DPI scalable inline SVG logo preserving dynamic wave motif + favicon bundle | M1 | survey |
