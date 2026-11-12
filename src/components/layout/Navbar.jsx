@@ -27,7 +27,7 @@ import { headerNavLinks, footerNavigation } from '../../data/navigationData';
  * Enterprise Navbar Component
  * Features:
  * - Top utility ticker with Oracle Partner status, 24/7 Managed Services indicator & direct phone
- * - Glassmorphic main navigation bar with scroll elevation
+ * - Pure white main navigation bar with scroll elevation and shape transformation
  * - Rich interactive mega-dropdowns for Solutions & About Us
  * - Responsive accessible mobile drawer (<768px) with trap focus protection
  * - Automatic window resize and orientation handling
@@ -168,8 +168,8 @@ export default function Navbar() {
         <div
           className={`transition-all duration-500 ease-in-out pointer-events-auto ${
             isScrolled
-              ? 'w-full rounded-none bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-md shadow-slate-900/5 px-4 sm:px-6 lg:px-8'
-              : 'max-w-7xl mx-auto rounded-full bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-lg shadow-slate-900/5 px-4 sm:px-6 lg:px-8'
+              ? 'w-full rounded-none bg-white border-b border-slate-200/90 shadow-md shadow-slate-900/5 px-4 sm:px-6 lg:px-8'
+              : 'max-w-7xl mx-auto rounded-full bg-white border border-slate-200/90 shadow-lg shadow-slate-900/5 px-4 sm:px-6 lg:px-8'
           }`}
         >
           <div
@@ -246,7 +246,7 @@ export default function Navbar() {
                     {/* Mega Menu Dropdown */}
                     {activeDropdown === item.name && (
                       <div
-                        className={`absolute left-0 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-200/90 py-4 px-4 z-50 animate-fade-in transition-all duration-300 ${
+                        className={`absolute left-0 bg-white rounded-2xl shadow-2xl border border-slate-200/90 py-4 px-4 z-50 animate-fade-in transition-all duration-300 ${
                           isScrolled ? 'mt-2' : 'mt-3.5'
                         } ${
                           item.name === 'Solutions' ? 'w-[580px] -left-16 lg:-left-12' : 'w-80'
