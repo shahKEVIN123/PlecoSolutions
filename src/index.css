@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Design Token CSS Variables */
+  --color-pleco-navy-dark: #0A192F;
+  --color-pleco-navy: #0F2744;
+  --color-pleco-royal: #1E3A8A;
+  --color-pleco-blue: #2563EB;
+  --color-pleco-azure: #3B82F6;
+  --color-pleco-sky: #0284C7;
+  --color-pleco-cyan: #06B6D4;
+  --color-pleco-ice: #EFF6FF;
+  --color-pleco-tint: #DBEAFE;
+
+  /* Typography scale */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Inter', sans-serif;
+
+  /* Container constraint */
+  --container-max-width: 1280px;
+}
+
+/* Global HTML & Body Resets */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #F8FAFC; /* slate-50 */
+  color: #1E293B;            /* slate-800 */
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Selection highlight */
+::selection {
+  background-color: #DBEAFE; /* pleco-tint */
+  color: #0A192F;            /* pleco-navy-dark */
+}
+
+/* Accessible focus ring defaults */
+:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
+
+/* Component Layer Primitives */
+@layer components {
+  /* Container Standard */
+  .container-enterprise {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-enterprise {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-enterprise {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Section Padding Standard */
+  .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  /* Enterprise Primary Button */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #2563EB;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.08);
+    transition: all 0.2s ease-in-out;
+  }
+  .btn-primary:hover {
+    background-color: #1D4ED8;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+    transform: translateY(-1px);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  /* Enterprise Secondary Button */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #FFFFFF;
+    color: #1E293B;
+    border: 1px solid #CBD5E1;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+    transition: all 0.2s ease-in-out;
+  }
+  .btn-secondary:hover {
+    background-color: #F8FAFC;
+    border-color: #94A3B8;
+    color: #0F172A;
+    transform: translateY(-1px);
+  }
+  .btn-secondary:active {
+    transform: translateY(0);
+  }
+
+  /* Enterprise Card */
+  .card-enterprise {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.05);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card-enterprise:hover {
+    border-color: #CBD5E1;
+    box-shadow: 0 12px 24px -4px rgba(15, 23, 42, 0.09);
+    transform: translateY(-2px);
+  }
+
+  /* Enterprise Pill Badge */
+  .badge-enterprise {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background-color: #EFF6FF;
+    border: 1px solid #DBEAFE;
+    color: #1E40AF;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+  }
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
