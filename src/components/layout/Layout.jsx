@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
@@ -7,17 +7,20 @@ import Footer from './Footer';
  * Layout Component
  * Global enterprise shell wrapper:
  * - Accessible Skip-to-Content anchor for screen readers and keyboard users
- * - Persistent Navbar with desktop dropdowns and mobile drawer
- * - Main content container with flex-grow to keep Footer pinned to bottom
+ * - Persistent Fixed Navbar with desktop dropdowns and mobile drawer
+ * - Main content container with route-aware padding to ensure seamless hero on Home
+ *   and proper fixed-navbar clearance on all subpages
  * - Persistent enterprise Footer
- * - Supports nested routing via either `children` or React Router `<Outlet />`
  * 
  * @param {Object} props
  * @param {React.ReactNode} [props.children] - Page content
  */
 export default function Layout({ children }) {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white">
       {/* Skip to Content Accessible Link (WCAG 2.4.1) */}
       <a
         href="#main-content"
@@ -30,7 +33,11 @@ export default function Layout({ children }) {
       <Navbar />
 
       {/* Main Content Area */}
-      <main id="main-content" className="flex-grow focus:outline-none" tabIndex={-1}>
+      <main
+        id="main-content"
+        className={`flex-grow focus:outline-none ${isHome ? '' : 'pt-24 sm:pt-28 lg:pt-36'}`}
+        tabIndex={-1}
+      >
         {children || <Outlet />}
       </main>
 

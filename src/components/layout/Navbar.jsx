@@ -152,9 +152,12 @@ export default function Navbar() {
   };
 
   return (
-    <>
+    <header
+      ref={navRef}
+      className="fixed top-0 left-0 right-0 z-50 w-full pointer-events-none transition-all duration-300"
+    >
       {/* Top Utility Bar (Desktop Only) */}
-      <div className="hidden lg:block bg-pleco-navy-dark text-slate-300 text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
+      <div className="hidden lg:block bg-pleco-navy-dark text-slate-300 text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-slate-800 pointer-events-auto">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-6">
             <span className="inline-flex items-center gap-2 font-medium text-slate-300">
@@ -181,10 +184,7 @@ export default function Navbar() {
       </div>
 
       {/* Floating Pill Navigation Bar Header */}
-      <header
-        ref={navRef}
-        className="sticky top-0 sm:top-2 md:top-3 z-50 px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 pointer-events-none transition-all duration-300"
-      >
+      <div className="px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 pointer-events-none">
         <div
           className={`max-w-7xl mx-auto rounded-full bg-white/80 backdrop-blur-md border border-slate-200/80 transition-all duration-300 pointer-events-auto px-4 sm:px-6 lg:px-8 ${
             isScrolled
@@ -369,6 +369,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+    </div>
 
       {/* Mobile Drawer Backdrop Overlay */}
       {mobileMenuOpen && (
@@ -493,6 +494,5 @@ export default function Navbar() {
         </div>
       </div>
     </header>
-  </>
-);
+  );
 }
