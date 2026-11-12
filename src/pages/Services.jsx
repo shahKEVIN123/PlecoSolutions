@@ -100,10 +100,10 @@ export default function Services() {
         <Breadcrumbs items={[{ label: 'Services' }]} />
 
         {/* Hero Banner */}
-        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden">
+        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden border border-slate-700/60">
           <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-4xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            <div className="glass-pill-dark inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sky-300 text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
               <Award className="w-4 h-4 text-cyan-400" />
               <span>Full-Lifecycle Consulting Practice</span>
             </div>
@@ -127,14 +127,14 @@ export default function Services() {
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/20"
               >
                 <span>Schedule a Services Consultation</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
                 href="#four-pillars"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-semibold text-sm transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-sm font-semibold text-sm transition-all shadow-sm"
               >
                 <span>Explore the 4 Pillars</span>
               </a>
@@ -162,14 +162,14 @@ export default function Services() {
               return (
                 <div
                   key={pillar.id}
-                  className="bg-white rounded-3xl border border-slate-200/90 p-8 lg:p-10 shadow-sm hover:shadow-xl hover:border-blue-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                  className="glass-card rounded-3xl p-8 lg:p-10 flex flex-col justify-between group"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <div className="w-14 h-14 rounded-2xl bg-pleco-ice text-pleco-blue flex items-center justify-center shadow-xs">
+                      <div className="w-14 h-14 rounded-2xl bg-pleco-ice/90 border border-blue-100 text-pleco-blue flex items-center justify-center shadow-xs">
                         <Icon className="w-7 h-7" />
                       </div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue bg-pleco-ice px-3 py-1 rounded-full">
+                      <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue bg-pleco-ice/80 border border-blue-100 px-3 py-1 rounded-full">
                         {pillar.tag}
                       </span>
                     </div>
@@ -213,7 +213,7 @@ export default function Services() {
         </div>
 
         {/* Engagement Lifecycle Section */}
-        <div className="mb-20 p-8 lg:p-12 rounded-3xl bg-white border border-slate-200 shadow-sm">
+        <div className="mb-20 p-8 lg:p-12 rounded-3xl glass-card">
           <div className="max-w-3xl mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
               Methodology &amp; Execution
@@ -230,7 +230,7 @@ export default function Services() {
             {lifecyclePhases.map((phase) => (
               <div
                 key={phase.step}
-                className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-pleco-ice hover:border-blue-200 transition-colors"
+                className="p-6 rounded-2xl bg-white/70 backdrop-blur-sm border border-slate-200/80 hover:bg-pleco-ice/70 hover:border-blue-200 transition-all shadow-xs"
               >
                 <div className="text-3xl font-extrabold text-pleco-blue mb-2 font-mono">
                   {phase.step}
@@ -247,9 +247,9 @@ export default function Services() {
         </div>
 
         {/* Managed Services Commitment Banner */}
-        <div className="bg-pleco-navy-dark text-white rounded-3xl p-8 lg:p-14 relative overflow-hidden shadow-xl">
+        <div className="bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white rounded-3xl p-8 lg:p-14 relative overflow-hidden shadow-xl border border-slate-700/60">
           <div className="relative z-10 max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-emerald-400 text-xs font-semibold">
+            <div className="glass-pill-dark inline-flex items-center gap-2 px-3 py-1 rounded-full text-emerald-400 text-xs font-semibold backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>Continuous Care &amp; Risk Mitigation</span>
             </div>
@@ -263,7 +263,7 @@ export default function Services() {
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/25"
               >
                 <span>Connect With Support</span>
                 <ArrowRight className="w-4 h-4" />

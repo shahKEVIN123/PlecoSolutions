@@ -79,10 +79,10 @@ export default function Careers() {
         <Breadcrumbs items={[{ label: 'Careers' }]} />
 
         {/* Hero Banner */}
-        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden">
+        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden border border-slate-700/60">
           <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-4xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            <div className="glass-pill-dark inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sky-300 text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
               <Briefcase className="w-4 h-4 text-cyan-400" />
               <span>Join Our Elite Team</span>
             </div>
@@ -99,14 +99,14 @@ export default function Careers() {
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <a
                 href="#openings"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/20"
               >
                 <span>View Open Positions</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href="mailto:Info@plecosolutions.com?subject=General%20Inquiry%20-%20Careers"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-semibold text-sm transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-sm font-semibold text-sm transition-all shadow-sm"
               >
                 <span>Direct Resume Submission</span>
               </a>
@@ -121,9 +121,9 @@ export default function Careers() {
             return (
               <div
                 key={p.title}
-                className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-pleco-blue transition-colors"
+                className="p-7 rounded-2xl glass-card hover:border-pleco-blue transition-all group"
               >
-                <div className="w-12 h-12 rounded-xl bg-pleco-ice text-pleco-blue flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl bg-pleco-ice/90 border border-blue-100 text-pleco-blue flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <Icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">{p.title}</h3>
@@ -148,7 +148,7 @@ export default function Careers() {
             {jobs.map((job) => (
               <div
                 key={job.id}
-                className="bg-white rounded-3xl border border-slate-200/90 p-8 lg:p-10 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 flex flex-col justify-between"
+                className="glass-card rounded-3xl p-8 lg:p-10 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between flex-wrap gap-2 mb-4">

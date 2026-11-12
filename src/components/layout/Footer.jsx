@@ -9,7 +9,7 @@ import { footerNavigation } from '../../data/navigationData';
  * Architectural Highlights:
  * - Pre-footer Consultative Engagement Banner
  * - 4-Column Enterprise Information Architecture
- * - Verbatim Copyright '© 2015 by PLECO SOLUTIONS' and Trademark Disclaimers
+ * - Verbatim Copyright '© 2026 by PLECO SOLUTIONS' and Trademark Disclaimers
  * - WCAG 2.1 AA High-Contrast Typography
  * - Uses semantic Tailwind tokens: bg-pleco-navy-dark and bg-navy-950 (no arbitrary hex)
  */
@@ -26,41 +26,6 @@ export default function Footer() {
       <h2 id="footer-heading" className="sr-only">
         Pleco Solutions Corporate Footer
       </h2>
-
-      {/* Pre-Footer Action Banner */}
-      <div className="border-b border-slate-800/80 bg-gradient-to-r from-pleco-navy via-navy-800 to-pleco-navy py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 bg-slate-900/60 p-8 lg:p-10 rounded-2xl border border-slate-700/60 shadow-xl">
-            <div className="max-w-2xl space-y-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pleco-navy-dark border border-blue-500/30 text-sky-300 text-xs font-semibold uppercase tracking-wider">
-                <Award className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Premier Value Chain Planning Advisory</span>
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Ready to Optimize Your Value Chain Planning?
-              </h3>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                Connect with our certified Oracle planning specialists to explore customized Demantra, ASCP, or SCM Planning Cloud roadmaps.
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-4 shrink-0">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-lg hover:shadow-blue-500/25"
-              >
-                <span>Schedule Consultation</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                to="/solutions"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold text-sm transition-all"
-              >
-                <span>Explore Solutions</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Main 4-Column Footer Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">

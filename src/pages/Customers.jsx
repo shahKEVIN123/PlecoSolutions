@@ -43,10 +43,10 @@ export default function Customers() {
         <Breadcrumbs items={[{ label: 'Customer Testimonials' }]} />
 
         {/* Hero Header Banner */}
-        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden">
+        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden border border-slate-700/60">
           <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-4xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            <div className="glass-pill-dark inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sky-300 text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
               <Award className="w-4 h-4 text-cyan-400" />
               <span>Verified Client Endorsements</span>
             </div>
@@ -63,14 +63,14 @@ export default function Customers() {
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/20"
               >
                 <span>Partner With Us</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/solutions"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-semibold text-sm transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-sm font-semibold text-sm transition-all shadow-sm"
               >
                 <span>Explore Solutions</span>
               </Link>
@@ -83,12 +83,12 @@ export default function Customers() {
           {testimonials.map((t) => (
             <div
               key={t.id}
-              className="bg-white rounded-3xl border border-slate-200/90 p-8 lg:p-12 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 relative"
+              className="glass-card rounded-3xl p-8 lg:p-12 shadow-sm relative group"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 {/* Left Side: Client Credential */}
                 <div className="lg:col-span-4 space-y-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pleco-ice border border-blue-200 text-pleco-blue text-xs font-bold uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pleco-ice/90 border border-blue-200 text-pleco-blue text-xs font-bold uppercase tracking-wider">
                     <Building2 className="w-3.5 h-3.5" />
                     <span>{t.industry}</span>
                   </div>
@@ -101,7 +101,7 @@ export default function Customers() {
                     {t.role}
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1">
+                  <div className="p-3.5 rounded-xl bg-white/70 backdrop-blur-sm border border-slate-200/80 text-xs text-slate-600 space-y-1">
                     <div className="font-bold text-slate-800 uppercase tracking-wider text-[10px]">
                       Outcome Spotlight:
                     </div>
@@ -128,7 +128,7 @@ export default function Customers() {
         </div>
 
         {/* Enterprise Bottom Banner */}
-        <div className="bg-pleco-navy-dark rounded-3xl text-white p-8 lg:p-14 flex flex-col sm:flex-row items-center justify-between gap-8 shadow-xl">
+        <div className="bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy rounded-3xl text-white p-8 lg:p-14 flex flex-col sm:flex-row items-center justify-between gap-8 shadow-xl border border-slate-700/60">
           <div className="max-w-2xl space-y-2">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
               Ready to achieve similar results?

@@ -43,10 +43,10 @@ export default function Navbar() {
   const navRef = useRef(null);
   const dropdownTimeoutRef = useRef(null);
 
-  // Elevation shadow on scroll
+  // Elevation & shape transformation on scroll
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -154,52 +154,41 @@ export default function Navbar() {
   return (
     <header
       ref={navRef}
-      className="fixed top-0 left-0 right-0 z-50 w-full pointer-events-none transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 w-full pointer-events-none transition-all duration-500 ease-in-out"
     >
-      {/* Top Utility Bar (Desktop Only) */}
-      <div className="hidden lg:block bg-pleco-navy-dark text-slate-300 text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-slate-800 pointer-events-auto">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-6">
-            <span className="inline-flex items-center gap-2 font-medium text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              <span>Specialized Oracle Value Chain Planning (VCP) &amp; SCM Planning Cloud Consulting</span>
-            </span>
-          </div>
-          <div className="flex items-center space-x-6">
-            <a
-              href={`tel:${footerNavigation.contact.phoneRaw}`}
-              className="flex items-center gap-1.5 hover:text-white transition-colors text-slate-300"
-              aria-label={`Call Pleco Solutions at ${footerNavigation.contact.phone}`}
-            >
-              <Phone className="w-3.5 h-3.5 text-pleco-blue" />
-              <span>{footerNavigation.contact.phone}</span>
-            </a>
-            <span className="text-slate-700">|</span>
-            <span className="inline-flex items-center gap-1.5 text-emerald-400 font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              <span>24/7 Managed Services &amp; Support</span>
-            </span>
-          </div>
-        </div>
-      </div>
 
-      {/* Floating Pill Navigation Bar Header */}
-      <div className="px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 pointer-events-none">
+      {/* Main Navigation Bar Wrapper - Transforms between floating pill and standard full-width bar */}
+      <div
+        className={`transition-all duration-500 ease-in-out ${
+          isScrolled
+            ? 'px-0 py-0 pointer-events-auto'
+            : 'px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 pointer-events-none'
+        }`}
+      >
         <div
-          className={`max-w-7xl mx-auto rounded-full bg-white/80 backdrop-blur-md border border-slate-200/80 transition-all duration-300 pointer-events-auto px-4 sm:px-6 lg:px-8 ${
+          className={`transition-all duration-500 ease-in-out pointer-events-auto ${
             isScrolled
-              ? 'shadow-xl shadow-slate-900/10 bg-white/90 border-slate-300/90'
-              : 'shadow-lg shadow-slate-900/5'
+              ? 'w-full rounded-none bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-md shadow-slate-900/5 px-4 sm:px-6 lg:px-8'
+              : 'max-w-7xl mx-auto rounded-full bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-lg shadow-slate-900/5 px-4 sm:px-6 lg:px-8'
           }`}
         >
-          <div className="flex items-center justify-between h-16 sm:h-20">
+          <div
+            className={`max-w-7xl mx-auto flex items-center justify-between transition-all duration-500 ease-in-out ${
+              isScrolled ? 'h-16 sm:h-18' : 'h-16 sm:h-20'
+            }`}
+          >
             {/* Brand Logo */}
             <Link
               to="/"
-              className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue rounded-full p-1.5 transition-transform hover:scale-[1.02]"
+              className={`flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue p-1.5 transition-all duration-300 hover:scale-[1.02] ${
+                isScrolled ? 'rounded-lg' : 'rounded-full'
+              }`}
               aria-label="Pleco Solutions Home"
             >
-              <Logo className="h-9 sm:h-10 w-auto" variant="default" />
+              <Logo
+                className={`w-auto transition-all duration-500 ${isScrolled ? 'h-8 sm:h-9' : 'h-9 sm:h-10'}`}
+                variant="default"
+              />
             </Link>
 
             {/* Desktop Navigation Links */}
@@ -212,7 +201,9 @@ export default function Navbar() {
                     <Link
                       key={item.name}
                       to={item.href}
-                      className={`px-3.5 lg:px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                      className={`px-3.5 lg:px-4 py-2 text-sm font-semibold transition-all duration-300 ${
+                        isScrolled ? 'rounded-lg' : 'rounded-full'
+                      } ${
                         active
                           ? 'text-pleco-blue bg-pleco-ice font-bold shadow-xs'
                           : 'text-slate-700 hover:text-pleco-blue hover:bg-slate-100/80'
@@ -235,7 +226,9 @@ export default function Navbar() {
                       onClick={() => toggleDropdownClick(item.name)}
                       aria-expanded={activeDropdown === item.name}
                       aria-haspopup="true"
-                      className={`inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue ${
+                      className={`inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-2 text-sm font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue ${
+                        isScrolled ? 'rounded-lg' : 'rounded-full'
+                      } ${
                         active || activeDropdown === item.name
                           ? 'text-pleco-blue bg-pleco-ice font-bold shadow-xs'
                           : 'text-slate-700 hover:text-pleco-blue hover:bg-slate-100/80'
@@ -253,7 +246,9 @@ export default function Navbar() {
                     {/* Mega Menu Dropdown */}
                     {activeDropdown === item.name && (
                       <div
-                        className={`absolute left-0 mt-3.5 bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-slate-200/90 py-4 px-4 z-50 animate-fade-in ${
+                        className={`absolute left-0 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-200/90 py-4 px-4 z-50 animate-fade-in transition-all duration-300 ${
+                          isScrolled ? 'mt-2' : 'mt-3.5'
+                        } ${
                           item.name === 'Solutions' ? 'w-[580px] -left-16 lg:-left-12' : 'w-80'
                         }`}
                         role="menu"
@@ -350,7 +345,9 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               to="/contact"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-pleco-blue hover:bg-blue-700 text-white font-semibold text-sm transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-blue-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue"
+              className={`hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-pleco-blue hover:bg-blue-700 text-white font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-blue-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue ${
+                isScrolled ? 'rounded-xl' : 'rounded-full'
+              }`}
             >
               <span>Contact Us</span>
               <ArrowRight className="w-4 h-4" />
@@ -360,7 +357,9 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 rounded-full text-slate-700 hover:text-slate-900 hover:bg-slate-100/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue"
+              className={`md:hidden p-2.5 text-slate-700 hover:text-slate-900 hover:bg-slate-100/80 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-pleco-blue ${
+                isScrolled ? 'rounded-xl' : 'rounded-full'
+              }`}
               aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileMenuOpen}
             >

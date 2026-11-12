@@ -98,10 +98,10 @@ export default function Contact() {
         <Breadcrumbs items={[{ label: 'Contact Us' }]} />
 
         {/* Hero Banner */}
-        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden">
+        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden border border-slate-700/60">
           <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-4xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            <div className="glass-pill-dark inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sky-300 text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
               <Mail className="w-4 h-4 text-cyan-400" />
               <span>Get in Touch</span>
             </div>
@@ -120,7 +120,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 mb-16 items-start">
           {/* Left Column: Corporate Headquarters Cards */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-white rounded-3xl border border-slate-200/90 p-8 shadow-sm space-y-6">
+            <div className="glass-card rounded-3xl p-8 shadow-sm space-y-6">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
                   Global Headquarters
@@ -133,7 +133,7 @@ export default function Contact() {
               <div className="space-y-5 pt-4 border-t border-slate-100">
                 {/* Physical Street Address */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-pleco-ice text-pleco-blue flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-pleco-ice/90 border border-blue-100 text-pleco-blue flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
@@ -149,7 +149,7 @@ export default function Contact() {
 
                 {/* Direct Telephone */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-pleco-ice text-pleco-blue flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-pleco-ice/90 border border-blue-100 text-pleco-blue flex items-center justify-center shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
@@ -167,7 +167,7 @@ export default function Contact() {
 
                 {/* Email Address */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-pleco-ice text-pleco-blue flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-pleco-ice/90 border border-blue-100 text-pleco-blue flex items-center justify-center shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
@@ -204,7 +204,7 @@ export default function Contact() {
             </div>
 
             {/* Oracle Partner Assurance Card */}
-            <div className="p-6 rounded-2xl bg-gradient-to-r from-pleco-navy-dark to-navy-900 text-white border border-slate-800 shadow-md">
+            <div className="p-6 rounded-2xl glass-card-dark text-white border border-slate-700/60 shadow-md">
               <div className="flex items-center gap-3 mb-2">
                 <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0" />
                 <span className="text-sm font-bold">Confidential Enterprise Consultation</span>
@@ -217,7 +217,7 @@ export default function Contact() {
 
           {/* Right Column: Inquiry Interface */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-3xl border border-slate-200/90 p-8 lg:p-10 shadow-sm">
+            <div className="glass-card rounded-3xl p-8 lg:p-10 shadow-sm">
               <div className="mb-6">
                 <h3 className="text-xl font-bold text-slate-900 mb-1">
                   Direct Inquiries &amp; Project Consultations

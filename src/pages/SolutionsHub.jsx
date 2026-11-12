@@ -119,7 +119,7 @@ export default function SolutionsHub() {
         <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-4xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            <div className="glass-pill-dark inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sky-300 text-xs font-semibold uppercase tracking-wider">
               <Award className="w-4 h-4 text-cyan-400" />
               <span>Comprehensive Enterprise Solutions</span>
             </div>
@@ -146,7 +146,7 @@ export default function SolutionsHub() {
               </Link>
               <a
                 href="#all-modules"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-semibold text-sm transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 hover:text-white border border-white/20 font-semibold text-sm transition-all backdrop-blur-md"
               >
                 <span>View All 12 Modules</span>
               </a>
@@ -176,14 +176,14 @@ export default function SolutionsHub() {
               return (
                 <div
                   key={item.href}
-                  className="bg-white rounded-2xl border border-slate-200/90 p-7 flex flex-col justify-between hover:shadow-xl hover:border-pleco-blue hover:-translate-y-1 transition-all duration-300 group"
+                  className="glass-card rounded-3xl p-7 flex flex-col justify-between group"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
-                      <div className="w-12 h-12 rounded-xl bg-pleco-ice group-hover:bg-pleco-blue text-pleco-blue group-hover:text-white flex items-center justify-center transition-colors shadow-xs">
+                      <div className="w-12 h-12 rounded-xl bg-pleco-ice/90 group-hover:bg-pleco-blue text-pleco-blue group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-xs border border-blue-100">
                         <Icon className="w-6 h-6" />
                       </div>
-                      <span className="text-[10px] font-mono font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">
+                      <span className="text-[10px] font-mono font-semibold text-slate-500 bg-slate-100/80 px-2.5 py-1 rounded-md">
                         {item.code.split('/')[0].trim()}
                       </span>
                     </div>
@@ -224,7 +224,7 @@ export default function SolutionsHub() {
         </div>
 
         {/* All 12 Oracle Modules Catalog Section */}
-        <div id="all-modules" className="mb-20 p-8 lg:p-12 rounded-3xl bg-white border border-slate-200 shadow-sm">
+        <div id="all-modules" className="mb-20 p-8 lg:p-12 rounded-3xl glass-card">
           <div className="max-w-3xl mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
               Complete Functional Coverage
@@ -241,7 +241,7 @@ export default function SolutionsHub() {
             {coreModules.map((mod) => (
               <div
                 key={mod}
-                className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:bg-pleco-ice hover:border-blue-200 transition-all flex items-center gap-3"
+                className="p-4 rounded-xl bg-white/70 backdrop-blur-sm border border-slate-200/80 hover:bg-pleco-ice/80 hover:border-blue-200 transition-all flex items-center gap-3"
               >
                 <div className="w-2 h-2 rounded-full bg-pleco-blue shrink-0" />
                 <span className="text-xs sm:text-sm font-semibold text-slate-800">
@@ -253,9 +253,9 @@ export default function SolutionsHub() {
         </div>
 
         {/* Verticals Section */}
-        <div className="bg-white rounded-3xl border border-slate-200 p-8 lg:p-12 shadow-sm mb-16">
+        <div className="glass-card rounded-3xl p-8 lg:p-12 mb-16">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-2.5 rounded-xl bg-pleco-ice text-pleco-blue">
+            <div className="p-2.5 rounded-xl bg-pleco-ice/90 border border-blue-100 text-pleco-blue">
               <Factory className="w-6 h-6" />
             </div>
             <div>
@@ -277,7 +277,7 @@ export default function SolutionsHub() {
               return (
                 <div
                   key={vert.title}
-                  className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all"
+                  className="p-6 rounded-2xl bg-white/70 backdrop-blur-sm border border-slate-200/80 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all"
                 >
                   <div className="p-3 rounded-xl bg-white border border-slate-200 text-pleco-blue inline-flex mb-4 shadow-xs">
                     <IconComp className="w-6 h-6" />

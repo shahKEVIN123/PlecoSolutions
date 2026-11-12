@@ -165,7 +165,7 @@ export default function Home() {
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs sm:text-sm font-semibold mb-8 shadow-sm backdrop-blur-sm"
+              className="glass-pill-dark inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-sky-300 text-xs sm:text-sm font-semibold mb-8 shadow-sm backdrop-blur-md"
             >
               <Award className="w-4 h-4 text-cyan-400 shrink-0" />
               <span>Oracle Specialized Value Chain Planning Partner</span>
@@ -210,7 +210,7 @@ export default function Home() {
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-xl bg-slate-800/90 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-700/80 font-semibold text-base transition-all duration-200 hover:-translate-y-0.5 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 hover:text-white border border-white/20 font-semibold text-base transition-all duration-200 hover:-translate-y-0.5 backdrop-blur-md focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 shadow-sm"
               >
                 <Phone className="w-4 h-4 text-sky-400" />
                 <span>Contact Us</span>
@@ -231,7 +231,7 @@ export default function Home() {
                 key={m.label}
                 variants={fadeInUp}
                 custom={idx}
-                className="p-5 rounded-2xl bg-slate-800/40 border border-slate-800 backdrop-blur-sm hover:border-slate-700/80 transition-colors"
+                className="glass-card-dark p-5 sm:p-6 rounded-2xl border border-white/10 hover:border-sky-400/40 transition-all duration-300"
               >
                 <div className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-sky-300 tracking-tight mb-1">
                   {m.value}
@@ -290,8 +290,8 @@ export default function Home() {
 
             {/* Right Column: Architectural Highlights Card */}
             <div className="lg:col-span-5">
-              <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200/80 shadow-sm space-y-6">
-                <div className="flex items-center gap-3 pb-4 border-b border-slate-200">
+              <div className="p-8 rounded-3xl glass-card space-y-6">
+                <div className="flex items-center gap-3 pb-4 border-b border-slate-200/80">
                   <div className="w-12 h-12 rounded-2xl bg-pleco-blue text-white flex items-center justify-center shadow-md">
                     <Award className="w-6 h-6" />
                   </div>
@@ -325,7 +325,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-white border border-slate-200 text-xs text-slate-600 flex items-center justify-between">
+                <div className="p-4 rounded-xl bg-slate-50/80 backdrop-blur-sm border border-slate-200/70 text-xs text-slate-600 flex items-center justify-between">
                   <span>Want to learn more about our firm?</span>
                   <Link to="/about" className="font-semibold text-pleco-blue hover:underline">
                     View Profile
@@ -343,7 +343,7 @@ export default function Home() {
       <section className="py-20 lg:py-28 bg-slate-50 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-pleco-blue text-xs font-bold uppercase tracking-wider mb-4 shadow-xs">
+            <div className="glass-pill-light inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-pleco-blue text-xs font-bold uppercase tracking-wider mb-4 shadow-xs">
               <TrendingUp className="w-4 h-4 text-pleco-blue" />
               <span>Full-Lifecycle Consulting</span>
             </div>
@@ -369,10 +369,10 @@ export default function Home() {
               return (
                 <div
                   key={service.title}
-                  className="group p-7 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-blue-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                  className="group p-7 rounded-2xl glass-card flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-pleco-ice group-hover:bg-pleco-blue text-pleco-blue group-hover:text-white flex items-center justify-center mb-6 transition-colors duration-200">
+                    <div className="w-12 h-12 rounded-xl bg-pleco-ice/90 backdrop-blur-sm border border-blue-100 group-hover:bg-pleco-blue text-pleco-blue group-hover:text-white flex items-center justify-center mb-6 transition-all duration-300">
                       <IconComp className="w-6 h-6" />
                     </div>
                     <span className="text-[11px] font-bold uppercase tracking-wider text-pleco-blue block mb-2">
@@ -417,7 +417,7 @@ export default function Home() {
       <section className="py-20 lg:py-28 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pleco-ice border border-blue-200/60 text-pleco-blue text-xs font-bold uppercase tracking-wider mb-4">
+            <div className="glass-pill-light inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-pleco-blue text-xs font-bold uppercase tracking-wider mb-4">
               <Layers className="w-4 h-4 text-pleco-blue" />
               <span>Comprehensive Planning Architecture</span>
             </div>
@@ -440,14 +440,14 @@ export default function Home() {
                 <Link
                   key={sol.title}
                   to={sol.route}
-                  className="group p-7 rounded-2xl bg-white border border-slate-200 hover:border-pleco-blue hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                  className="group p-7 rounded-2xl glass-card flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 group-hover:bg-pleco-blue group-hover:text-white flex items-center justify-center transition-colors">
+                      <div className="w-10 h-10 rounded-xl bg-pleco-ice/90 text-pleco-blue group-hover:bg-pleco-blue group-hover:text-white flex items-center justify-center transition-colors">
                         <IconComp className="w-5 h-5" />
                       </div>
-                      <span className="text-[10px] font-mono font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                      <span className="text-[10px] font-mono font-semibold text-slate-500 bg-slate-100/80 px-2 py-0.5 rounded">
                         {sol.code.split('/')[0].trim()}
                       </span>
                     </div>
@@ -484,13 +484,13 @@ export default function Home() {
                 return (
                   <div
                     key={v.title}
-                    className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-sky-300 hover:shadow-md transition-all"
+                    className="p-6 rounded-2xl glass-card"
                   >
                     <div className="flex items-center justify-between mb-4">
-                      <div className="p-2.5 rounded-xl bg-white border border-slate-200 text-pleco-blue shadow-xs">
+                      <div className="p-2.5 rounded-xl bg-pleco-ice/90 border border-blue-100 text-pleco-blue shadow-xs">
                         <IconComp className="w-5 h-5" />
                       </div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-white border border-slate-200 px-2.5 py-0.5 rounded-full">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 bg-white/90 border border-slate-200 px-2.5 py-0.5 rounded-full">
                         {v.badge}
                       </span>
                     </div>
@@ -526,13 +526,13 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-sky-300 text-xs font-bold uppercase tracking-wider mb-6">
+            <div className="glass-pill-dark inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sky-300 text-xs font-bold uppercase tracking-wider mb-6">
               <Quote className="w-3.5 h-3.5 text-cyan-400" />
               <span>Verified Enterprise Client Endorsement</span>
             </div>
 
-            {/* Verbatim Qualcomm Quote */}
-            <blockquote className="text-lg sm:text-xl lg:text-2xl italic text-slate-200 leading-relaxed font-normal mb-8">
+            {/* Verbatim Qualcomm Quote inside glass-card-dark */}
+            <blockquote className="glass-card-dark p-8 sm:p-12 rounded-3xl text-lg sm:text-xl lg:text-2xl italic text-slate-100 leading-relaxed font-normal mb-8">
               "A highly valued asset during the implementation phase of Demantra. The product knowledge PLECO brought to the team  helped resolve various customization activities within the module. Team was often challenged to provide solutions on  various complex business needs. They quickly resolved all scenarios and often exceeded expectations. I strongly  recommend this team for similiar efforts"
             </blockquote>
 
@@ -549,7 +549,7 @@ export default function Home() {
 
               <Link
                 to="/customers"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-sky-300 font-semibold text-xs sm:text-sm border border-slate-700 transition-colors group"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-sky-300 font-semibold text-xs sm:text-sm border border-white/20 backdrop-blur-md transition-colors group"
               >
                 <span>Testimonials</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -581,7 +581,7 @@ export default function Home() {
               </Link>
               <Link
                 to="/services"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-sm transition-all shadow-xs"
+                className="glass-card inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-slate-800 font-semibold text-sm hover:border-blue-400/50"
               >
                 <span>Explore All Consulting Services</span>
               </Link>

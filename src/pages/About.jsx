@@ -72,10 +72,10 @@ export default function About() {
         <Breadcrumbs items={[{ label: 'About Us' }]} />
 
         {/* Hero Banner */}
-        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden">
+        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-16 shadow-xl relative overflow-hidden border border-slate-700/60">
           <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-4xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            <div className="glass-pill-dark inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sky-300 text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
               <Award className="w-4 h-4 text-cyan-400" />
               <span>Niche Oracle Planning Expertise</span>
             </div>
@@ -100,14 +100,14 @@ export default function About() {
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <Link
                 to="/customers"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/20"
               >
                 <span>Read Client Testimonials</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-semibold text-sm transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-sm font-semibold text-sm transition-all shadow-sm"
               >
                 <span>Contact Leadership</span>
               </Link>
@@ -116,7 +116,7 @@ export default function About() {
         </div>
 
         {/* Why Organizations Choose Pleco */}
-        <div className="mb-16 bg-white rounded-3xl border border-slate-200 p-8 lg:p-12 shadow-sm">
+        <div className="mb-16 glass-card rounded-3xl p-8 lg:p-12 shadow-sm">
           <div className="max-w-3xl mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
               Core Value Proposition
@@ -130,7 +130,7 @@ export default function About() {
             {highlights.map((item) => (
               <div
                 key={item}
-                className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-3.5 hover:bg-pleco-ice hover:border-blue-200 transition-colors"
+                className="p-5 rounded-2xl bg-white/70 backdrop-blur-sm border border-slate-200/80 flex items-start gap-3.5 hover:bg-pleco-ice/70 hover:border-blue-200 transition-all shadow-xs"
               >
                 <CheckCircle2 className="w-5 h-5 text-pleco-blue shrink-0 mt-0.5" />
                 <span className="text-sm font-semibold text-slate-800 leading-relaxed">
@@ -145,7 +145,7 @@ export default function About() {
               const IconComp = p.icon;
               return (
                 <div key={p.title} className="space-y-2">
-                  <div className="w-10 h-10 rounded-xl bg-pleco-ice text-pleco-blue flex items-center justify-center mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-pleco-ice/90 border border-blue-100 text-pleco-blue flex items-center justify-center mb-3">
                     <IconComp className="w-5 h-5" />
                   </div>
                   <h4 className="text-sm font-bold text-slate-900">{p.title}</h4>
@@ -157,7 +157,7 @@ export default function About() {
         </div>
 
         {/* Industry Verticals Section */}
-        <div className="mb-16 bg-white rounded-3xl border border-slate-200 p-8 lg:p-12 shadow-sm">
+        <div className="mb-16 glass-card rounded-3xl p-8 lg:p-12 shadow-sm">
           <div className="max-w-3xl mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
               Industry Experience
@@ -173,9 +173,9 @@ export default function About() {
               return (
                 <div
                   key={v.title}
-                  className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all"
+                  className="p-6 rounded-2xl bg-white/70 backdrop-blur-sm border border-slate-200/80 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all"
                 >
-                  <div className="p-3 rounded-xl bg-white border border-slate-200 text-pleco-blue inline-flex mb-4 shadow-xs">
+                  <div className="p-3 rounded-xl bg-pleco-ice/90 border border-blue-100 text-pleco-blue inline-flex mb-4 shadow-xs">
                     <IconComp className="w-6 h-6" />
                   </div>
                   <h3 className="text-base font-bold text-slate-900 mb-2">
@@ -194,7 +194,7 @@ export default function About() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
           <Link
             to="/customers"
-            className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-pleco-blue hover:shadow-lg transition-all group"
+            className="p-6 rounded-2xl glass-card hover:border-pleco-blue hover:shadow-lg transition-all group"
           >
             <div className="w-10 h-10 rounded-xl bg-pleco-ice text-pleco-blue flex items-center justify-center mb-4 group-hover:bg-pleco-blue group-hover:text-white transition-colors">
               <Building2 className="w-5 h-5" />
@@ -213,7 +213,7 @@ export default function About() {
 
           <Link
             to="/careers"
-            className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-pleco-blue hover:shadow-lg transition-all group"
+            className="p-6 rounded-2xl glass-card hover:border-pleco-blue hover:shadow-lg transition-all group"
           >
             <div className="w-10 h-10 rounded-xl bg-pleco-ice text-pleco-blue flex items-center justify-center mb-4 group-hover:bg-pleco-blue group-hover:text-white transition-colors">
               <Briefcase className="w-5 h-5" />
@@ -232,7 +232,7 @@ export default function About() {
 
           <Link
             to="/contact"
-            className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-pleco-blue hover:shadow-lg transition-all group"
+            className="p-6 rounded-2xl glass-card hover:border-pleco-blue hover:shadow-lg transition-all group"
           >
             <div className="w-10 h-10 rounded-xl bg-pleco-ice text-pleco-blue flex items-center justify-center mb-4 group-hover:bg-pleco-blue group-hover:text-white transition-colors">
               <ShieldCheck className="w-5 h-5" />

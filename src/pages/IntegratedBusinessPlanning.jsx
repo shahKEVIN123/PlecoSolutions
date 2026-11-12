@@ -58,10 +58,10 @@ export default function IntegratedBusinessPlanning() {
         />
 
         {/* Hero Banner */}
-        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-12 shadow-xl relative overflow-hidden">
+        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-12 shadow-xl relative overflow-hidden border border-slate-700/60">
           <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-4xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            <div className="glass-pill-dark inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sky-300 text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
               <Cpu className="w-4 h-4 text-cyan-400" />
               <span>S&amp;OP &amp; Executive Analytics</span>
             </div>
@@ -79,14 +79,14 @@ export default function IntegratedBusinessPlanning() {
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/20"
               >
                 <span>Consult an IBP / S&amp;OP Architect</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/solutions"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-semibold text-sm transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-sm font-semibold text-sm transition-all shadow-sm"
               >
                 <span>View All Solutions</span>
               </Link>
@@ -95,9 +95,9 @@ export default function IntegratedBusinessPlanning() {
         </div>
 
         {/* SIMPLE Framework Feature Card */}
-        <div className="mb-16 p-8 lg:p-12 rounded-3xl bg-white border border-slate-200 shadow-sm">
+        <div className="mb-16 p-8 lg:p-12 rounded-3xl glass-card shadow-sm">
           <div className="max-w-3xl mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-pleco-ice text-pleco-blue text-xs font-bold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-pleco-ice/90 border border-blue-200 text-pleco-blue text-xs font-bold uppercase tracking-wider mb-2">
               <Award className="w-4 h-4" />
               <span>Proprietary Methodology</span>
             </div>
@@ -116,7 +116,7 @@ export default function IntegratedBusinessPlanning() {
             {framework.alignedFunctions.map((func) => (
               <div
                 key={func}
-                className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 text-center hover:bg-pleco-ice hover:border-blue-200 transition-colors"
+                className="p-5 rounded-2xl bg-white/70 backdrop-blur-sm border border-slate-200/80 text-center hover:bg-pleco-ice/70 hover:border-blue-200 transition-all shadow-xs"
               >
                 <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-pleco-blue flex items-center justify-center mx-auto mb-3 shadow-xs">
                   <Target className="w-5 h-5" />
@@ -147,9 +147,9 @@ export default function IntegratedBusinessPlanning() {
             {coreTechnologies.map((tech) => (
               <div
                 key={tech.title}
-                className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-pleco-blue hover:shadow-lg transition-all"
+                className="p-7 rounded-2xl glass-card hover:border-pleco-blue hover:shadow-lg transition-all group"
               >
-                <div className="w-10 h-10 rounded-xl bg-pleco-ice text-pleco-blue flex items-center justify-center mb-4">
+                <div className="w-10 h-10 rounded-xl bg-pleco-ice/90 border border-blue-100 text-pleco-blue flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <Workflow className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2">
@@ -164,7 +164,7 @@ export default function IntegratedBusinessPlanning() {
         </div>
 
         {/* Key Capabilities */}
-        <div className="mb-16 bg-white rounded-3xl border border-slate-200 p-8 lg:p-12 shadow-sm">
+        <div className="mb-16 glass-card rounded-3xl p-8 lg:p-12 shadow-sm">
           <div className="max-w-2xl mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
               Core Capabilities
@@ -178,7 +178,7 @@ export default function IntegratedBusinessPlanning() {
             {keyCapabilities.map((cap) => (
               <div
                 key={cap.title}
-                className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all"
+                className="p-6 rounded-2xl bg-white/70 backdrop-blur-sm border border-slate-200/80 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all"
               >
                 <div className="flex items-center gap-2.5 mb-3">
                   <CheckCircle2 className="w-5 h-5 text-pleco-blue shrink-0" />

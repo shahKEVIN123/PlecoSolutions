@@ -77,10 +77,10 @@ export default function OrderFulfillment() {
         />
 
         {/* Hero Banner */}
-        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-12 shadow-xl relative overflow-hidden">
+        <div className="p-8 lg:p-14 rounded-3xl bg-gradient-to-br from-pleco-navy-dark via-navy-900 to-pleco-navy text-white mb-12 shadow-xl relative overflow-hidden border border-slate-700/60">
           <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-4xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-sky-300 text-xs font-semibold uppercase tracking-wider">
+            <div className="glass-pill-dark inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sky-300 text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
               <Truck className="w-4 h-4 text-cyan-400" />
               <span>Real-Time Order Promising | GOP / DOO</span>
             </div>
@@ -98,14 +98,14 @@ export default function OrderFulfillment() {
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-pleco-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/20"
               >
                 <span>Consult an Order Promising Specialist</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/solutions"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-semibold text-sm transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-sm font-semibold text-sm transition-all shadow-sm"
               >
                 <span>View All Solutions</span>
               </Link>
@@ -128,9 +128,9 @@ export default function OrderFulfillment() {
             {coreTechnologies.map((tech) => (
               <div
                 key={tech.title}
-                className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-pleco-blue hover:shadow-lg transition-all"
+                className="p-7 rounded-2xl glass-card hover:border-pleco-blue hover:shadow-lg transition-all group"
               >
-                <div className="w-10 h-10 rounded-xl bg-pleco-ice text-pleco-blue flex items-center justify-center mb-4">
+                <div className="w-10 h-10 rounded-xl bg-pleco-ice/90 border border-blue-100 text-pleco-blue flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <Truck className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2">
@@ -145,7 +145,7 @@ export default function OrderFulfillment() {
         </div>
 
         {/* Key Capabilities */}
-        <div className="mb-16 bg-white rounded-3xl border border-slate-200 p-8 lg:p-12 shadow-sm">
+        <div className="mb-16 glass-card rounded-3xl p-8 lg:p-12 shadow-sm">
           <div className="max-w-2xl mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-pleco-blue block mb-1">
               Fulfillment Rules
@@ -159,7 +159,7 @@ export default function OrderFulfillment() {
             {keyCapabilities.map((cap) => (
               <div
                 key={cap.title}
-                className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between"
+                className="p-6 rounded-2xl bg-white/70 backdrop-blur-sm border border-slate-200/80 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-2 mb-3">
@@ -178,7 +178,7 @@ export default function OrderFulfillment() {
         </div>
 
         {/* Benefits Card */}
-        <div className="mb-16 p-8 lg:p-12 rounded-3xl bg-slate-900 text-white">
+        <div className="mb-16 p-8 lg:p-12 rounded-3xl glass-card-dark text-white border border-slate-700/60 shadow-xl">
           <div className="max-w-2xl mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 block mb-1">
               Business Value
@@ -192,7 +192,7 @@ export default function OrderFulfillment() {
             {benefits.map((b) => (
               <div
                 key={b}
-                className="p-5 rounded-xl bg-slate-800/80 border border-slate-700/80 flex items-start gap-3"
+                className="p-5 rounded-xl bg-slate-800/60 border border-slate-700/60 flex items-start gap-3 backdrop-blur-sm"
               >
                 <Zap className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
                 <span className="text-sm text-slate-200 font-medium">
